@@ -19,12 +19,4 @@ public class main {
         
         Semaphore mainMutex = new Semaphore(1);
         
-        Developer hilo1 = new Developer("Hilo1", mainMutex);
-        Developer hilo2 = new Developer("Hilo2", mainMutex);
-        Developer hilo3 = new Developer("Hilo3", mainMutex);
-        
-        hilo1.start();
-        hilo2.start();
-        hilo3.start();
-    
     }}
