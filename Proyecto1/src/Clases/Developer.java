@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyecto1;
+package Clases;
 
 import java.util.concurrent.Semaphore;
 
@@ -10,12 +10,12 @@ import java.util.concurrent.Semaphore;
  *
  * @author Ana Blanco
  */
-public class Hilo extends Thread {
+public class Developer extends Thread {
  
     private String msg;
     private Semaphore mutex;
     
-    public Hilo(String msg, Semaphore mutex){
+    public Developer(String msg, Semaphore mutex){
         this.msg = msg;
         this.mutex = mutex;
     }
@@ -39,4 +39,9 @@ public class Hilo extends Thread {
         }
     }
     
-}
+    public void obtainSalary(){
+        
+        
+    }}
+    
+

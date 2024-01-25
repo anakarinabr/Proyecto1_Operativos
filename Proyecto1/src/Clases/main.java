@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package proyecto1;
+package Clases;
 
 import java.util.concurrent.Semaphore;
 
@@ -19,9 +19,9 @@ public class main {
         
         Semaphore mainMutex = new Semaphore(1);
         
-        Hilo hilo1 = new Hilo("Hilo1", mainMutex);
-        Hilo hilo2 = new Hilo("Hilo2", mainMutex);
-        Hilo hilo3 = new Hilo("Hilo3", mainMutex);
+        Developer hilo1 = new Developer("Hilo1", mainMutex);
+        Developer hilo2 = new Developer("Hilo2", mainMutex);
+        Developer hilo3 = new Developer("Hilo3", mainMutex);
         
         hilo1.start();
         hilo2.start();
