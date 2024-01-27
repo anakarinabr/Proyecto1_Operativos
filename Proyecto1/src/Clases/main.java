@@ -19,8 +19,9 @@ public class main {
 
         int dayDuration = 3000;
         Semaphore mainMutex = new Semaphore(1);
-        Drive drive = new Drive();
+        Drive drive = new Drive(2,1,1,4,3,2);
 
+        
         Developer hilo1 = new Developer(0, dayDuration,"Jose", drive, mainMutex);
         Developer hilo2 = new Developer(2, dayDuration,"Joaquin",drive, mainMutex);
         Developer hilo3 = new Developer(3, dayDuration, "Jonas", drive, mainMutex);
