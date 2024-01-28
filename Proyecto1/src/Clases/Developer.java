@@ -43,6 +43,7 @@ public class Developer extends Thread {
       Si type =4, es Guionista de PlotTwist
       Si type =5, es un ensamblador
          */
+        
         if (type == 0) {
             valor += 1;
         } else if (type == 1) {

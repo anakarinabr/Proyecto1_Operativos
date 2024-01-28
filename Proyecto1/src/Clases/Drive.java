@@ -80,6 +80,12 @@ public class Drive {
     public void assembler(){
         
         
+        this.animaciones -= this.AnimacionesEnsamblaje;
+        this.guiones -= this.AnimacionesEnsamblaje;
+        this.escenarios -= this.EscenariosEnsamblaje;
+        this.doblajes -= this.DoblajesEnsamblaje;
+//        this.PlotTwist -= this.PlotTwistEnsamblaje;    Solo para capitulos con plotTwist pero no lo he configurado
+        this.CapituloStandar++;
     }
     
     // GETTERS AND SETTERS
