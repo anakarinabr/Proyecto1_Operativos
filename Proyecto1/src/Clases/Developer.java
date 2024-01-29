@@ -24,6 +24,7 @@ public class Developer extends Thread {
     private float acc;
     private Semaphore mutex;
     private float valor;
+    
 
     public Developer(int type, int duration, String name, Drive d, Semaphore m) {
 
