@@ -1,9 +1,9 @@
-Duración, 3
-Días, 7
+Duración,3
+Días,7
 Trabajadores
 Guionistas,4
-Diseñador de escenarios,3
-Animador de personajes,2
-Actores de doblaje,2
-Guionista de PlotTwist,1
+Diseñador,3
+Animador,2
+Actores,2
+PlotTwist,1
 Ensambladores,3
