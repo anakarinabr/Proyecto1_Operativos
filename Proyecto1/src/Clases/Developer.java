@@ -24,9 +24,10 @@ public class Developer extends Thread {
     private float acc;
     private Semaphore mutex;
     private float valor;
+    private int trabajadores;
     
 
-    public Developer(int type, int duration, String name, Drive d, Semaphore m) {
+    public Developer(int type, int duration, String name, Drive d, Semaphore m, String empresa ) {
 
         this.type = type;
         this.salaryAcc = 0;
@@ -35,28 +36,36 @@ public class Developer extends Thread {
         this.drive = d;
         this.acc = 0;
         this.mutex = m;
+        this.trabajadores = 0;
 
         /* 
-      Si type = 0, es un animador de personaje
-      Si type =1, es un disenador de escenarios
-      Si type =2, es un guionista
-      Si type =3, es un actor de doblaje 
-      Si type =4, es Guionista de PlotTwist
-      Si type =5, es un ensamblador
+      Si type = 0, es un animador de personaje   igual
+      Si type =1, es un disenador de escenarios  DISTINTO
+      Si type =2, es un guionista                DISTINTOS
+      Si type =3, es un actor de doblaje         IGUAL
+      Si type =4, es Guionista de PlotTwist      DISTINTO
+      Si type =5, es un ensamblador              igual
          */
         
         if (type == 0) {
             valor += 1;
-        } else if (type == 1) {
+        } else if (type == 1 && empresa.equalsIgnoreCase("Disney")) {
             valor += 0.34;
-        } else if (type == 2) {
+        } else if (type == 2 && empresa.equalsIgnoreCase("Disney")) {
             valor += 0.34;
         } else if (type == 3) {
             valor += 1;
-        } else if (type == 4) {
+        } else if (type == 4 && empresa.equalsIgnoreCase("Disney")) { 
+            valor += 0.34;
+        } else if (type == 5){
             valor += 0.5;
-        } else {
+        } else if (type == 1 && empresa.equalsIgnoreCase("Cartoon")) {
+            valor += 0.25;
+        } else if (type == 2 && empresa.equalsIgnoreCase("Cartoon")) {
+            valor += 0.25;
+        } else if (type == 4 && empresa.equalsIgnoreCase("Cartoon")) { 
             valor += 0.5;
+            
         }
 
         if (type == 0) {
@@ -102,7 +111,7 @@ public class Developer extends Thread {
         if (this.acc >= 1 && this.type != 5) {
             try {
                 this.mutex.acquire();//wait
-                this.drive.addPart(this.type);//critica
+                this.drive.addPart(this.type, this.trabajadores);//critica
                 this.mutex.release();// signal
                 this.acc = 0;
 
@@ -123,4 +132,16 @@ public class Developer extends Thread {
         }
 
     }
+    
+    //Getters and Setters
+
+    public int getTrabajadores() {
+        return trabajadores;
+    }
+
+    public void setTrabajadores(int trabajadores) {
+        this.trabajadores = trabajadores;
+    }
+    
+    
 }

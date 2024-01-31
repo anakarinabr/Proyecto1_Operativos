@@ -6,12 +6,12 @@ package Interfaces;
 
 /**
  *
- * @author Ana Blanco
+ * @author georg
  */
 public class Interfaz_principal extends javax.swing.JFrame {
 
     /**
-     * Creates new form Interfaz_principal
+     * Creates new form Prueba
      */
     public Interfaz_principal() {
         initComponents();
@@ -27,25 +27,54 @@ public class Interfaz_principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        Inicio = new javax.swing.JTabbedPane();
+        Dashboard = new javax.swing.JPanel();
+        DisneyChanel = new javax.swing.JPanel();
+        CartoonNetwork = new javax.swing.JPanel();
+        jSpinner1 = new javax.swing.JSpinner();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 700, Short.MAX_VALUE))
+        javax.swing.GroupLayout DashboardLayout = new javax.swing.GroupLayout(Dashboard);
+        Dashboard.setLayout(DashboardLayout);
+        DashboardLayout.setHorizontalGroup(
+            DashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 744, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 500, Short.MAX_VALUE))
+        DashboardLayout.setVerticalGroup(
+            DashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 602, Short.MAX_VALUE)
         );
+
+        Inicio.addTab("Inicio", Dashboard);
+
+        javax.swing.GroupLayout DisneyChanelLayout = new javax.swing.GroupLayout(DisneyChanel);
+        DisneyChanel.setLayout(DisneyChanelLayout);
+        DisneyChanelLayout.setHorizontalGroup(
+            DisneyChanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 744, Short.MAX_VALUE)
+        );
+        DisneyChanelLayout.setVerticalGroup(
+            DisneyChanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 602, Short.MAX_VALUE)
+        );
+
+        Inicio.addTab("Disney Chanel", DisneyChanel);
+
+        CartoonNetwork.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        CartoonNetwork.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
+
+        jLabel2.setText("Project Manager");
+        CartoonNetwork.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 109, 140, -1));
+
+        Inicio.addTab("Cartoon Network", CartoonNetwork);
+
+        getContentPane().add(Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -76,6 +105,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Interfaz_principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -86,6 +116,12 @@ public class Interfaz_principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel CartoonNetwork;
+    private javax.swing.JPanel Dashboard;
+    private javax.swing.JPanel DisneyChanel;
+    private javax.swing.JTabbedPane Inicio;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSpinner jSpinner1;
     // End of variables declaration//GEN-END:variables
 }
