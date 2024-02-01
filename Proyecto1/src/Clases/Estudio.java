@@ -12,7 +12,7 @@ public class Estudio {
     
     private Drive drive;
     private Director director;
-    private Producer_Manager producer;
+    private Project_Manager manager;
     private Developer guionistas;
     private Developer diseñadores;
     private Developer animadores;
@@ -21,11 +21,15 @@ public class Estudio {
     private Developer ensambladores;
     private int duracion;
     private int deadline;
+    private int gananciaStandar;
+    private int gananciaPlotTwist;
+    private int gananciaTotal;
+    
 
-    public Estudio(Drive drive, Director director, Producer_Manager producer, Developer guionistas, Developer diseñadores, Developer animadores, Developer actores, Developer plotTwist, Developer ensambladores, int duracion, int deadline) {
+    public Estudio(Drive drive, Director director, Project_Manager manager, Developer guionistas, Developer diseñadores, Developer animadores, Developer actores, Developer plotTwist, Developer ensambladores, int duracion, int deadline,  int ganaciaStandar, int gananciaPlotTwist) {
         this.drive = drive;
         this.director = director;
-        this.producer = producer;
+        this.manager = manager;
         this.guionistas = guionistas;
         this.diseñadores = diseñadores;
         this.animadores = animadores;
@@ -34,6 +38,13 @@ public class Estudio {
         this.ensambladores = ensambladores;
         this.deadline = deadline; //dias en el txt
         this.duracion = duracion; 
+        this.gananciaPlotTwist = gananciaPlotTwist;
+        this.gananciaStandar = gananciaStandar;
+        this.gananciaTotal = 0;
+    }
+    
+    public void generarGanancia(){
+    
     }
     
     // Getters and Setters
@@ -54,12 +65,12 @@ public class Estudio {
         this.director = director;
     }
 
-    public Producer_Manager getProducer() {
-        return producer;
+    public Project_Manager getProducer() {
+        return manager;
     }
 
-    public void setProducer(Producer_Manager producer) {
-        this.producer = producer;
+    public void setProducer(Project_Manager manager) {
+        this.manager = manager;
     }
 
     public Developer getGuionistas() {

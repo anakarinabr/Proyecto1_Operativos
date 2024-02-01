@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class Developer extends Thread {
 
-    private String name;
+    private String empresa;
     private int type;
     private float salaryAcc;
     private int dayDuration;
@@ -27,16 +27,16 @@ public class Developer extends Thread {
     private int trabajadores;
     
 
-    public Developer(int type, int duration, String name, Drive d, Semaphore m, String empresa ) {
+    public Developer(int type, int dayduration, Drive d, Semaphore m, String empresa, int trabajadores) {
 
         this.type = type;
         this.salaryAcc = 0;
-        this.dayDuration = duration;
-        this.name = name;
+        this.dayDuration = dayduration;
         this.drive = d;
         this.acc = 0;
         this.mutex = m;
-        this.trabajadores = 0;
+        this.trabajadores = trabajadores;
+        this.empresa = empresa;
 
         /* 
       Si type = 0, es un animador de personaje   igual
@@ -102,7 +102,7 @@ public class Developer extends Thread {
     }
 
     public void obtainSalary() {
-        this.salaryAcc += this.salary * 24;
+        this.salaryAcc += this.salary * 24 *this.trabajadores;
     }
 
     public void work() throws InterruptedException {
@@ -142,6 +142,69 @@ public class Developer extends Thread {
     public void setTrabajadores(int trabajadores) {
         this.trabajadores = trabajadores;
     }
-    
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public float getSalaryAcc() {
+        return salaryAcc;
+    }
+
+    public void setSalaryAcc(float salaryAcc) {
+        this.salaryAcc = salaryAcc;
+    }
+
+    public int getDayDuration() {
+        return dayDuration;
+    }
+
+    public void setDayDuration(int dayDuration) {
+        this.dayDuration = dayDuration;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public Drive getDrive() {
+        return drive;
+    }
+
+    public void setDrive(Drive drive) {
+        this.drive = drive;
+    }
+
+    public float getAcc() {
+        return acc;
+    }
+
+    public void setAcc(float acc) {
+        this.acc = acc;
+    }
+
+    public Semaphore getMutex() {
+        return mutex;
+    }
+
+    public void setMutex(Semaphore mutex) {
+        this.mutex = mutex;
+    }
+
+    public float getValor() {
+        return valor;
+    }
+
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
     
 }

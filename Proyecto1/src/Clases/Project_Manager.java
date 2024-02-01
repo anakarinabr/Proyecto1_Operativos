@@ -8,7 +8,7 @@ package Clases;
  *
  * @author Ana Blanco
  */
-public class Producer_Manager extends Thread {
+public class Project_Manager extends Thread {
     
     private int dayCounter;
     private int dayDuration;
@@ -16,7 +16,7 @@ public class Producer_Manager extends Thread {
     private int salary;
     private int salaryAcc;
 
-    public Producer_Manager(int dayCounter, int dayDuration, String workStatus, int salaryAcc) {
+    public Project_Manager(int dayCounter, int dayDuration, String workStatus, int salaryAcc) {
         this.dayCounter = dayCounter;
         this.dayDuration = dayDuration;
         this.workStatus = workStatus;

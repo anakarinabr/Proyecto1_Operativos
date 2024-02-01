@@ -6,18 +6,19 @@ package Main;
 
 import java.util.concurrent.Semaphore;
 import Clases.FunctionTXT;
+import Interfaces.Interfaz_principal;
 
 /**
  *
  * @author Ana Blanco
  */
 public class main {
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         FunctionTXT s = new FunctionTXT();
         s.leer_txt();
 //        int dayDuration = 3000;
@@ -32,5 +33,7 @@ public class main {
 //        hilo1.start();
 //        hilo2.start();
 //        hilo3.start();
+        Interfaz_principal principal = new Interfaz_principal();
+        principal.setVisible(true);
     }
 }

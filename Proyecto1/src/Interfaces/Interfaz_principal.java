@@ -17,6 +17,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
      */
     public Interfaz_principal() {
         initComponents();
+        this.setLocationRelativeTo(null);
       }
 
     /**
@@ -31,6 +32,12 @@ public class Interfaz_principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Inicio = new javax.swing.JTabbedPane();
         Dashboard = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jSpinner2 = new javax.swing.JSpinner();
+        jSpinner3 = new javax.swing.JSpinner();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         DisneyChanel = new javax.swing.JPanel();
         CartoonNetwork = new javax.swing.JPanel();
         jSpinner1 = new javax.swing.JSpinner();
@@ -42,16 +49,21 @@ public class Interfaz_principal extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, -1, -1));
 
-        javax.swing.GroupLayout DashboardLayout = new javax.swing.GroupLayout(Dashboard);
-        Dashboard.setLayout(DashboardLayout);
-        DashboardLayout.setHorizontalGroup(
-            DashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 744, Short.MAX_VALUE)
-        );
-        DashboardLayout.setVerticalGroup(
-            DashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 602, Short.MAX_VALUE)
-        );
+        Dashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Dashboard.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jButton1.setText("Guardar");
+        Dashboard.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, -1, -1));
+        Dashboard.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
+        Dashboard.add(jSpinner3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
+
+        jLabel1.setText("Duración del día (s)");
+        Dashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+
+        jLabel3.setText("DeadLine");
+        Dashboard.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         Inicio.addTab("Inicio", Dashboard);
 
@@ -59,11 +71,11 @@ public class Interfaz_principal extends javax.swing.JFrame {
         DisneyChanel.setLayout(DisneyChanelLayout);
         DisneyChanelLayout.setHorizontalGroup(
             DisneyChanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 744, Short.MAX_VALUE)
+            .addGap(0, 610, Short.MAX_VALUE)
         );
         DisneyChanelLayout.setVerticalGroup(
             DisneyChanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 602, Short.MAX_VALUE)
+            .addGap(0, 409, Short.MAX_VALUE)
         );
 
         Inicio.addTab("Disney Chanel", DisneyChanel);
@@ -122,8 +134,14 @@ public class Interfaz_principal extends javax.swing.JFrame {
     private javax.swing.JPanel Dashboard;
     private javax.swing.JPanel DisneyChanel;
     private javax.swing.JTabbedPane Inicio;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JSpinner jSpinner3;
     // End of variables declaration//GEN-END:variables
 }
