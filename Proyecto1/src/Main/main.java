@@ -12,12 +12,14 @@ import Clases.FunctionTXT;
  * @author Ana Blanco
  */
 public class main {
-
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        
+        FunctionTXT s = new FunctionTXT();
+        s.leer_txt();
 //        int dayDuration = 3000;
 //        Semaphore mainMutex = new Semaphore(1);
 //        Drive drive = new Drive(2,1,1,4,3,2);

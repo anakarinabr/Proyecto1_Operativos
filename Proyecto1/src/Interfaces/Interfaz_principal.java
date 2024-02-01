@@ -4,6 +4,8 @@
  */
 package Interfaces;
 
+import Clases.FunctionTXT;
+
 /**
  *
  * @author georg
@@ -15,7 +17,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
      */
     public Interfaz_principal() {
         initComponents();
-    }
+      }
 
     /**
      * This method is called from within the constructor to initialize the form.
