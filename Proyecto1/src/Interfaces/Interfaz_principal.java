@@ -42,6 +42,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
         CartoonNetwork = new javax.swing.JPanel();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
+        WorkStatus = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,12 +88,27 @@ public class Interfaz_principal extends javax.swing.JFrame {
         jLabel2.setText("Project Manager");
         CartoonNetwork.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 109, 140, -1));
 
+        WorkStatus.setText("jTextField1");
+        WorkStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WorkStatusActionPerformed(evt);
+            }
+        });
+        CartoonNetwork.add(WorkStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, -1));
+
+        jLabel4.setText("WorkStatus");
+        CartoonNetwork.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
+
         Inicio.addTab("Cartoon Network", CartoonNetwork);
 
         getContentPane().add(Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void WorkStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WorkStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_WorkStatusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,10 +151,12 @@ public class Interfaz_principal extends javax.swing.JFrame {
     private javax.swing.JPanel Dashboard;
     private javax.swing.JPanel DisneyChanel;
     private javax.swing.JTabbedPane Inicio;
+    private javax.swing.JTextField WorkStatus;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSpinner jSpinner1;

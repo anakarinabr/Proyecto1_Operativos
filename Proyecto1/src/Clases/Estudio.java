@@ -12,7 +12,7 @@ public class Estudio {
     
     private Drive drive;
     private Director director;
-    private Project_Manager manager;
+    private ProjectManager manager;
     private Developer guionistas;
     private Developer diseñadores;
     private Developer animadores;
@@ -26,7 +26,7 @@ public class Estudio {
     private int gananciaTotal;
     
 
-    public Estudio(Drive drive, Director director, Project_Manager manager, Developer guionistas, Developer diseñadores, Developer animadores, Developer actores, Developer plotTwist, Developer ensambladores, int duracion, int deadline,  int ganaciaStandar, int gananciaPlotTwist) {
+    public Estudio(Drive drive, Director director, ProjectManager manager, Developer guionistas, Developer diseñadores, Developer animadores, Developer actores, Developer plotTwist, Developer ensambladores, int duracion, int deadline,  int ganaciaStandar, int gananciaPlotTwist) {
         this.drive = drive;
         this.director = director;
         this.manager = manager;
@@ -65,11 +65,11 @@ public class Estudio {
         this.director = director;
     }
 
-    public Project_Manager getProducer() {
+    public ProjectManager getProducer() {
         return manager;
     }
 
-    public void setProducer(Project_Manager manager) {
+    public void setProducer(ProjectManager manager) {
         this.manager = manager;
     }
 
