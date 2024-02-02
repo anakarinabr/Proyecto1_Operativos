@@ -123,7 +123,7 @@ public class Director extends Thread {
     
     public long getMinutosVigilandoInMs(){
         int dayInMinutes =1440;
-        long MinutosVigilandoPM = (long) ((35 * 1440000)/dayInMinutes); //14440000 es un dia en ms
+        long MinutosVigilandoPM = (long) ((35 * this.dayDuration)/dayInMinutes); //14440000 es un dia en ms
         return MinutosVigilandoPM;         
     }
     

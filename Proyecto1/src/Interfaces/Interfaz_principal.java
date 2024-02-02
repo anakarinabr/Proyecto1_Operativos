@@ -44,6 +44,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         WorkStatus = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        faltas = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -99,6 +101,17 @@ public class Interfaz_principal extends javax.swing.JFrame {
         jLabel4.setText("WorkStatus");
         CartoonNetwork.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
 
+        faltas.setText("jTextField1");
+        faltas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                faltasActionPerformed(evt);
+            }
+        });
+        CartoonNetwork.add(faltas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, -1));
+
+        jLabel5.setText("Cant de faltas");
+        CartoonNetwork.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
+
         Inicio.addTab("Cartoon Network", CartoonNetwork);
 
         getContentPane().add(Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 440));
@@ -109,6 +122,10 @@ public class Interfaz_principal extends javax.swing.JFrame {
     private void WorkStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WorkStatusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_WorkStatusActionPerformed
+
+    private void faltasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_faltasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_faltasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,11 +169,13 @@ public class Interfaz_principal extends javax.swing.JFrame {
     private javax.swing.JPanel DisneyChanel;
     private javax.swing.JTabbedPane Inicio;
     private javax.swing.JTextField WorkStatus;
+    private javax.swing.JTextField faltas;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSpinner jSpinner1;

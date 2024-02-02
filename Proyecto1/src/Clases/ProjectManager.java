@@ -21,6 +21,8 @@ public class ProjectManager extends Thread {
     private boolean working;
     private Drive drive;
     private int dayDuration;
+    private int diasSobrantes;
+    private int diasPasados;
 
     public ProjectManager(JTextField WorkStatus, JTextField Faltas, JTextField CantDescontada, int salary, int salaryAcc, int salarioDescontado, int contadorFaltas, boolean working, Drive drive, int dayDuration) {
         this.WorkStatus = WorkStatus;
@@ -33,8 +35,50 @@ public class ProjectManager extends Thread {
         this.working = false;
         this.drive = drive;
         this.dayDuration = dayDuration;
+        this.diasPasados = 0;
     }
 
+    @Override
+        
+    public void run() {
+        while(true) {
+                try {      
+            for (int i = 0; i < 32; i++) {
+                //es 32 porque en 16 horas cambia su modo de trabajo 32 veces
+            }
+            if (working){
+                setWorking(false);
+            }else{ 
+                setWorking(true);
+            }
+            this.salarioDescontado = cantDescontada; 
+            this.salaryAcc =(- salarioDescontado + this.salaryAcc);
+                if (working) {
+                    WorkStatus.setText("Trabajando");
+                }else{
+                    WorkStatus.setText("Viendo Anime");
+                }
+            Faltas.setText(String.valueOf(faltas));
+            CantDescontada.setText(String.valueOf(discountedSalary));
+
+            sleep(getMinutosTrabajandoInMs());
+            }
+                    setWorking(true);
+                    this.setDiasSobrantes(this.getDiasSobrantes()-1);
+                    this.setDiasPasados(this.getDiasPasados()+1);
+                    this.salary();
+                    sleep(HorasRestantes());
+                } catch (InterruptedException ex) {
+                    //terminar catch
+            }
+                
+        }
+    
+    public int Horasrestantes(){
+        int HorasRestantes = this.getDayDurationInMs() - getMinutosTrabajandoInMs();
+        return HorasRestantes;
+        
+    }
     
     public boolean getWorking() {
         return working;
@@ -47,6 +91,12 @@ public class ProjectManager extends Thread {
     public int getDayDurationInMs() {
         int dayDurationInMs = this.dayDuration * 1000;
         return dayDurationInMs;
+    }
+    
+    public int getMinutosTrabajandoInMs() {
+        int dayInHours = 24;
+        int sixteenHours =  (((16 * this.getDayDurationInMs())/dayInHours)/32);
+        return sixteenHours;
     }
 
     public JTextField getWorkStatus() {
@@ -121,6 +171,23 @@ public class ProjectManager extends Thread {
     public void setDayDuration(int dayDuration) {
         this.dayDuration = dayDuration;
     }
+
+    public int getDiasSobrantes() {
+        return diasSobrantes;
+    }
+
+    public void setDiasSobrantes(int diasSobrantes) {
+        this.diasSobrantes = diasSobrantes;
+    }
+
+    public int getDiasPasados() {
+        return diasPasados;
+    }
+
+    public void setDiasPasados(int diasPasados) {
+        this.diasPasados = diasPasados;
+    }
+    
     
     
     
