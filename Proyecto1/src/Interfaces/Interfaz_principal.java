@@ -4,7 +4,9 @@
  */
 package Interfaces;
 
+import Clases.Estudio;
 import Clases.FunctionTXT;
+
 
 /**
  *
@@ -15,9 +17,26 @@ public class Interfaz_principal extends javax.swing.JFrame {
     /**
      * Creates new form Prueba
      */
-    public Interfaz_principal() {
+    
+    public static Global global;
+    
+    public Interfaz_principal(Global global) {
+        
         initComponents();
         this.setLocationRelativeTo(null);
+        this.global = global;
+        jSpinnerAnimadoresDisney.setValue(global.getDisney().getAnimadores().getTrabajadores());
+        jSpinnerAnimadoresCartoon.setValue(global.getDisney().getAnimadores().getTrabajadores());
+        jSpinnerDisenadoresDisney.setValue(global.getDisney().getDiseñadores().getTrabajadores());
+        jSpinnerDisenadoresCartoon.setValue(global.getDisney().getDiseñadores().getTrabajadores()); 
+        jSpinnerActoresDisney.setValue(global.getDisney().getActores().getTrabajadores());
+        jSpinnerActoresCartoon.setValue(global.getDisney().getActores().getTrabajadores());
+        jSpinnerEnsambladoresDisney.setValue(global.getDisney().getEnsambladores().getTrabajadores());
+        jSpinnerEnsambladoresCartoon.setValue(global.getDisney().getEnsambladores().getTrabajadores());
+        jSpinnerGuionistaDisney.setValue(global.getDisney().getGuionistas().getTrabajadores());
+        jSpinnerGuionistasCartoon.setValue(global.getDisney().getGuionistas().getTrabajadores());
+        jSpinnerPlotTwistDisney.setValue(global.getDisney().getPlotTwist().getTrabajadores());
+        jSpinnerPlotTwistCartoon.setValue(global.getDisney().getPlotTwist().getTrabajadores());
       }
 
     /**
@@ -33,11 +52,22 @@ public class Interfaz_principal extends javax.swing.JFrame {
         Inicio = new javax.swing.JTabbedPane();
         Dashboard = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
+        Actualizar = new javax.swing.JButton();
+        jSpinnerDuracion = new javax.swing.JSpinner();
+        jSpinnerDeadline = new javax.swing.JSpinner();
+        jSpinnerGuionistaDisney = new javax.swing.JSpinner();
+        jSpinnerDisenadoresDisney = new javax.swing.JSpinner();
+        jSpinnerAnimadoresDisney = new javax.swing.JSpinner();
+        jSpinnerActoresDisney = new javax.swing.JSpinner();
+        jSpinnerPlotTwistDisney = new javax.swing.JSpinner();
+        jSpinnerEnsambladoresDisney = new javax.swing.JSpinner();
+        jSpinnerGuionistasCartoon = new javax.swing.JSpinner();
+        jSpinnerDisenadoresCartoon = new javax.swing.JSpinner();
+        jSpinnerAnimadoresCartoon = new javax.swing.JSpinner();
+        jSpinnerActoresCartoon = new javax.swing.JSpinner();
+        jSpinnerPlotTwistCartoon = new javax.swing.JSpinner();
+        jSpinnerEnsambladoresCartoon = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         DisneyChanel = new javax.swing.JPanel();
         CartoonNetwork = new javax.swing.JPanel();
         jSpinner1 = new javax.swing.JSpinner();
@@ -58,16 +88,58 @@ public class Interfaz_principal extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         Dashboard.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jButton1.setText("Guardar");
-        Dashboard.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, -1, -1));
-        Dashboard.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
-        Dashboard.add(jSpinner3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
+        Actualizar.setText("Actualizar");
+        Actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarActionPerformed(evt);
+            }
+        });
+        Dashboard.add(Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, -1, -1));
 
-        jLabel1.setText("Duración del día (s)");
-        Dashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        jSpinnerDuracion.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        Dashboard.add(jSpinnerDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 90, -1));
 
-        jLabel3.setText("DeadLine");
-        Dashboard.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+        jSpinnerDeadline.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        Dashboard.add(jSpinnerDeadline, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 90, -1));
+
+        jSpinnerGuionistaDisney.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
+        Dashboard.add(jSpinnerGuionistaDisney, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, -1, -1));
+
+        jSpinnerDisenadoresDisney.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
+        Dashboard.add(jSpinnerDisenadoresDisney, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
+
+        jSpinnerAnimadoresDisney.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
+        Dashboard.add(jSpinnerAnimadoresDisney, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, -1, -1));
+
+        jSpinnerActoresDisney.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
+        Dashboard.add(jSpinnerActoresDisney, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, -1, -1));
+
+        jSpinnerPlotTwistDisney.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
+        Dashboard.add(jSpinnerPlotTwistDisney, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, -1, -1));
+
+        jSpinnerEnsambladoresDisney.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
+        Dashboard.add(jSpinnerEnsambladoresDisney, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, -1, -1));
+
+        jSpinnerGuionistasCartoon.setModel(new javax.swing.SpinnerNumberModel(1, 1, 18, 1));
+        Dashboard.add(jSpinnerGuionistasCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, -1, -1));
+
+        jSpinnerDisenadoresCartoon.setModel(new javax.swing.SpinnerNumberModel(1, 1, 18, 1));
+        Dashboard.add(jSpinnerDisenadoresCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, -1, -1));
+
+        jSpinnerAnimadoresCartoon.setModel(new javax.swing.SpinnerNumberModel(1, 1, 18, 1));
+        Dashboard.add(jSpinnerAnimadoresCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
+
+        jSpinnerActoresCartoon.setModel(new javax.swing.SpinnerNumberModel(1, 1, 18, 1));
+        Dashboard.add(jSpinnerActoresCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, -1, -1));
+
+        jSpinnerPlotTwistCartoon.setModel(new javax.swing.SpinnerNumberModel(1, 1, 18, 1));
+        Dashboard.add(jSpinnerPlotTwistCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, -1, -1));
+
+        jSpinnerEnsambladoresCartoon.setModel(new javax.swing.SpinnerNumberModel(1, 1, 18, 1));
+        Dashboard.add(jSpinnerEnsambladoresCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1(!).png"))); // NOI18N
+        Dashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Inicio.addTab("Inicio", Dashboard);
 
@@ -127,6 +199,29 @@ public class Interfaz_principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_faltasActionPerformed
 
+    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
+        
+        Estudio disney = this.global.getDisney();
+        Estudio cartoon = this.global.getCartoon();
+        
+        disney.getAnimadores().setTrabajadores((int)jSpinnerAnimadoresDisney.getValue());
+        cartoon.getAnimadores().setTrabajadores((int)jSpinnerAnimadoresCartoon.getValue());
+        disney.getDiseñadores().setTrabajadores((int)jSpinnerDisenadoresDisney.getValue());
+        cartoon.getDiseñadores().setTrabajadores((int)jSpinnerDisenadoresCartoon.getValue());
+        disney.getActores().setTrabajadores((int)jSpinnerActoresDisney.getValue());
+        cartoon.getActores().setTrabajadores((int)jSpinnerActoresCartoon.getValue());
+        disney.getEnsambladores().setTrabajadores((int)jSpinnerEnsambladoresDisney.getValue());
+        cartoon.getEnsambladores().setTrabajadores((int)jSpinnerEnsambladoresCartoon.getValue());
+        disney.getGuionistas().setTrabajadores((int)jSpinnerGuionistaDisney.getValue());
+        cartoon.getGuionistas().setTrabajadores((int)jSpinnerGuionistasCartoon.getValue());
+        disney.getPlotTwist().setTrabajadores((int)jSpinnerPlotTwistDisney.getValue());
+        cartoon.getPlotTwist().setTrabajadores((int)jSpinnerPlotTwistCartoon.getValue());
+        
+        
+        this.global.getS().escribir_txt((Estudio)this.global.getDisney());
+       
+    }//GEN-LAST:event_ActualizarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -158,28 +253,39 @@ public class Interfaz_principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Interfaz_principal().setVisible(true);
+                new Interfaz_principal(global).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Actualizar;
     private javax.swing.JPanel CartoonNetwork;
     private javax.swing.JPanel Dashboard;
     private javax.swing.JPanel DisneyChanel;
     private javax.swing.JTabbedPane Inicio;
     private javax.swing.JTextField WorkStatus;
     private javax.swing.JTextField faltas;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
+    private javax.swing.JSpinner jSpinnerActoresCartoon;
+    private javax.swing.JSpinner jSpinnerActoresDisney;
+    private javax.swing.JSpinner jSpinnerAnimadoresCartoon;
+    private javax.swing.JSpinner jSpinnerAnimadoresDisney;
+    private javax.swing.JSpinner jSpinnerDeadline;
+    private javax.swing.JSpinner jSpinnerDisenadoresCartoon;
+    private javax.swing.JSpinner jSpinnerDisenadoresDisney;
+    private javax.swing.JSpinner jSpinnerDuracion;
+    private javax.swing.JSpinner jSpinnerEnsambladoresCartoon;
+    private javax.swing.JSpinner jSpinnerEnsambladoresDisney;
+    private javax.swing.JSpinner jSpinnerGuionistaDisney;
+    private javax.swing.JSpinner jSpinnerGuionistasCartoon;
+    private javax.swing.JSpinner jSpinnerPlotTwistCartoon;
+    private javax.swing.JSpinner jSpinnerPlotTwistDisney;
     // End of variables declaration//GEN-END:variables
 }

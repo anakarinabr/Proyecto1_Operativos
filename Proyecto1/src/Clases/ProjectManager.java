@@ -11,27 +11,25 @@ import javax.swing.JTextField;
  * @author Ana Blanco
  */
 public class ProjectManager extends Thread {
-    javax.swing.JTextField WorkStatus;
-    javax.swing.JTextField Faltas;
-    javax.swing.JTextField CantDescontada;
+    private String WorkStatus;
+    private int faltas;
+    private int CantDescontada;
     private int salary;
     private int salaryAcc;
     private int salarioDescontado;
-    private int contadorFaltas;
     private boolean working;
     private Drive drive;
     private int dayDuration;
     private int diasSobrantes;
     private int diasPasados;
 
-    public ProjectManager(JTextField WorkStatus, JTextField Faltas, JTextField CantDescontada, int salary, int salaryAcc, int salarioDescontado, int contadorFaltas, boolean working, Drive drive, int dayDuration) {
-        this.WorkStatus = WorkStatus;
-        this.Faltas = Faltas;
-        this.CantDescontada = CantDescontada;
+    public ProjectManager( Drive drive, int dayDuration) {
+        this.WorkStatus = "Trabajando";
+        this.faltas = 0;
+        this.CantDescontada = 0;
         this.salary = 40;
-        this.salaryAcc = salaryAcc;
-        this.salarioDescontado = salarioDescontado;
-        this.contadorFaltas = contadorFaltas;
+        this.salaryAcc = 0;
+        this.salarioDescontado = 100;
         this.working = false;
         this.drive = drive;
         this.dayDuration = dayDuration;
@@ -43,36 +41,36 @@ public class ProjectManager extends Thread {
     public void run() {
         while(true) {
                 try {      
-            for (int i = 0; i < 32; i++) {
-                //es 32 porque en 16 horas cambia su modo de trabajo 32 veces
-            }
-            if (working){
-                setWorking(false);
-            }else{ 
-                setWorking(true);
-            }
-            this.salarioDescontado = cantDescontada; 
-            this.salaryAcc =(- salarioDescontado + this.salaryAcc);
-                if (working) {
-                    WorkStatus.setText("Trabajando");
-                }else{
-                    WorkStatus.setText("Viendo Anime");
-                }
-            Faltas.setText(String.valueOf(faltas));
-            CantDescontada.setText(String.valueOf(discountedSalary));
-
-            sleep(getMinutosTrabajandoInMs());
-            }
-                    setWorking(true);
-                    this.setDiasSobrantes(this.getDiasSobrantes()-1);
-                    this.setDiasPasados(this.getDiasPasados()+1);
-                    this.salary();
-                    sleep(HorasRestantes());
-                } catch (InterruptedException ex) {
-                    //terminar catch
+//            for (int i = 0; i < 32; i++) {
+//                //es 32 porque en 16 horas cambia su modo de trabajo 32 veces
+//            }
+//            if (working){
+//                setWorking(false);
+//            }else{ 
+//                setWorking(true);
+//            }
+//            this.salarioDescontado = cantDescontada; 
+//            this.salaryAcc =(- salarioDescontado + this.salaryAcc);
+//                if (working) {
+//                    WorkStatus.setText("Trabajando");
+//                }else{
+//                    WorkStatus.setText("Viendo Anime");
+//                }
+//            Faltas.setText(String.valueOf(faltas));
+//            CantDescontada.setText(String.valueOf(discountedSalary));
+//
+//            sleep(getMinutosTrabajandoInMs());
+//            
+//                    setWorking(true);
+//                    this.setDiasSobrantes(this.getDiasSobrantes()-1);
+//                    this.setDiasPasados(this.getDiasPasados()+1);
+//                    this.salary();
+//                    sleep(HorasRestantes());
+                } catch (Exception e) {
+                    System.out.println("Falló");
             }
                 
-        }
+        }}
     
     public int Horasrestantes(){
         int HorasRestantes = this.getDayDurationInMs() - getMinutosTrabajandoInMs();
@@ -99,28 +97,20 @@ public class ProjectManager extends Thread {
         return sixteenHours;
     }
 
-    public JTextField getWorkStatus() {
+    public String getWorkStatus() {
         return WorkStatus;
     }
 
-    public void setWorkStatus(JTextField WorkStatus) {
+    public void setWorkStatus(String WorkStatus) {
         this.WorkStatus = WorkStatus;
     }
 
-    public JTextField getFaltas() {
-        return Faltas;
+    public int getFaltas() {
+        return faltas;
     }
 
-    public void setFaltas(JTextField Faltas) {
-        this.Faltas = Faltas;
-    }
-
-    public JTextField getCantDescontada() {
-        return CantDescontada;
-    }
-
-    public void setCantDescontada(JTextField CantDescontada) {
-        this.CantDescontada = CantDescontada;
+    public void setFaltas(int Faltas) {
+        this.faltas = Faltas;
     }
 
 
@@ -146,14 +136,6 @@ public class ProjectManager extends Thread {
 
     public void setSalarioDescontado(int salarioDescontado) {
         this.salarioDescontado = salarioDescontado;
-    }
-
-    public int getContadorFaltas() {
-        return contadorFaltas;
-    }
-
-    public void setContadorFaltas(int contadorFaltas) {
-        this.contadorFaltas = contadorFaltas;
     }
 
     public Drive getDrive() {

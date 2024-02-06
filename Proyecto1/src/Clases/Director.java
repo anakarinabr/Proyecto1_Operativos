@@ -13,33 +13,32 @@ import java.util.Random;
 public class Director extends Thread {
     
     private int salary;
-    private int dayCounter;
+    private int deadline;
     private boolean revisarManager; 
     private boolean continuarTrabajando;
     private ProjectManager manager;
-//    private int ganancia; //ganancia por capítulo
-//    private int gananciaAccCapitulos; 
-//    private int chaptersCreated;
+    private int ganancia; //ganancia por ser director
+    private int gananciaAccCapitulos;
     private Drive drive;
     private int faltasCounter;
-    private final int gananciaCapitulos;
+    private int gananciaCapitulos;
+    private int gananciaCapituloPlotTwist;
     private int dayDuration;
-    javax.swing.JTextField WorkStatus;
+    private String WorkStatus;
 
-    public Director( int dayCounter, int ganancia, int gananciaAccCapitulos, int chaptersCreated, Drive drive, int faltasCounter, int gananciaCapitulos, int dayDuration, javax.swing.JTextField WorkStatus, ProjectManager manager) {
+    public Director( int deadline, Drive drive, int gananciaCapitulosStandar, int gananciaCapitulosPlotTwist, int dayDuration, ProjectManager manager) {
         this.salary = 0;
-        this.dayCounter = dayCounter;
+        this.deadline = deadline;
         this.revisarManager = false;
         this.continuarTrabajando = true;
-//        this.ganancia = ganancia;
-//        this.gananciaAccCapitulos = gananciaAccCapitulos;
-//        this.chaptersCreated = chaptersCreated;
+        this.ganancia = 60;
+        this.gananciaAccCapitulos = 0;
         this.drive = drive;
-        this.faltasCounter = faltasCounter;
+        this.faltasCounter = 0;
         this.gananciaCapitulos = gananciaCapitulos;
         this.dayDuration = dayDuration;
         this.manager = manager;
-        this.WorkStatus= WorkStatus;
+        this.WorkStatus= "Trabajando";
     }
 
 
@@ -50,14 +49,14 @@ public class Director extends Thread {
         long MinutosVigilandoPM = this.getMinutosVigilandoInMs();
         while(this.continuarTrabajando){
             try {
-                if (this.getDayCounter() == 0){
+                if (this.deadline == 0){
                     enviarCapitulos(); //faltacrearla
                 }else{
                     randomHour = this.getRandomHourInMs();
                     sleep(randomHour);
                     this.setRevisarManager(true);
                     verificarPM();
-                    WorkStatus.setText("trabajando");
+//                    WorkStatus.setText("trabajando");
                     long Dayrest = (long) (this.getDayInMs() - (randomHour + MinutosVigilandoPM));
                     this.getSalary();
                     sleep(Dayrest);
@@ -86,7 +85,7 @@ public class Director extends Thread {
     public void verificarPM(){
         long MinutosVigilandoPM = getMinutosVigilandoInMs();
         if (isRevisarManager()){
-            WorkStatus.setText("Vigilando");
+//            WorkStatus.setText("Vigilando");
             if(!this.manager.getWorking()){
                 try{
                     this.setRevisarManager(false);
@@ -105,7 +104,7 @@ public class Director extends Thread {
                     //terminar catch
                 }
             }
-            WorkStatus.setText("Trabajando");
+//            WorkStatus.setText("Trabajando");
         }
     }
     
@@ -147,13 +146,7 @@ public class Director extends Thread {
         this.salary = salary;
     }
 
-    public int getDayCounter() {
-        return dayCounter;
-    }
-
-    public void setDayCounter(int dayCounter) {
-        this.dayCounter = dayCounter;
-    }
+  
 
 
 //    public int getGanancia() {

@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class FunctionTXT {
 
-    public void leer_txt() {
+    public Estudio[] leer_txt() {
 
         try {
             File archivo = new File("test\\Information.txt");
@@ -37,6 +37,7 @@ public class FunctionTXT {
             fr.close();
             br.close();
             txt = txt.trim();
+            System.out.println("--------------------------");
             System.out.println(txt);
             Semaphore Mainmutex = new Semaphore(1);
             String[] info1 = txt.split("Trabajadores");
@@ -47,27 +48,56 @@ public class FunctionTXT {
 
             int[] disney = {2, 1, 1, 4, 3}; // animaciones, escenarios, guiones, doblajes, plotTwist para ensamblaje
             int[] cartoon = {6, 2, 1, 5, 1};
+            String[] separacion = tiempos[1].split("\n");
+       
+            int duracion =Integer.parseInt(separacion[0]);
+            
+            String guionistas1 = trabajadores[1].split("\n")[0];
+            String guionistas2 = trabajadores[2].split("\n")[0];
+            String guionistas3 = trabajadores[3].split("\n")[0];
+            String guionistas4 = trabajadores[4].split("\n")[0];
+            String guionistas5 = trabajadores[5].split("\n")[0];
+            String guionistas6 = trabajadores[6].split("\n")[0];
+           
             
             // CREACIÓN OBJETOS DISNEY
             Drive driveDisney = new Drive("Disney", disney[0], disney[1], disney[2], disney[3], disney[4], 2);
-            Developer animadores = new Developer(0, Integer.parseInt(tiempos[1]), driveDisney, Mainmutex, "Disney", Integer.parseInt(trabajadores[1]));
-            Developer disenadores = new Developer(1, Integer.parseInt(tiempos[1]), driveDisney, Mainmutex, "Disney", Integer.parseInt(trabajadores[3]));
-            Developer guionistas = new Developer(2, Integer.parseInt(tiempos[1]), driveDisney, Mainmutex, "Disney", Integer.parseInt(trabajadores[5]));
-            Developer actores = new Developer(3, Integer.parseInt(tiempos[1]), driveDisney, Mainmutex, "Disney", Integer.parseInt(trabajadores[7]));
-            Developer plotTwist = new Developer(4, Integer.parseInt(tiempos[1]), driveDisney, Mainmutex, "Disney", Integer.parseInt(trabajadores[9]));
-            Developer ensambladores = new Developer(5, Integer.parseInt(tiempos[1]), driveDisney, Mainmutex, "Disney", Integer.parseInt(trabajadores[11]));
-//            Director director = new Director(driveDisney, );
-//            Project_Manager manager = new Project_Manager();
-//            Estudio disney = new Estudio();
+            Developer animadores = new Developer(0, duracion, driveDisney, Mainmutex, "Disney", Integer.parseInt(guionistas3));
+            Developer disenadores = new Developer(1, duracion, driveDisney, Mainmutex, "Disney", Integer.parseInt(guionistas2));
+            Developer guionistas = new Developer(2, duracion, driveDisney, Mainmutex, "Disney", Integer.parseInt(guionistas1));
+            Developer actores = new Developer(3, duracion, driveDisney, Mainmutex, "Disney", Integer.parseInt(guionistas4));
+            Developer plotTwist = new Developer(4, duracion, driveDisney, Mainmutex, "Disney", Integer.parseInt(guionistas5));
+            Developer ensambladores = new Developer(5, duracion, driveDisney, Mainmutex, "Disney", Integer.parseInt(guionistas6));
             
-
-            // CREACIÓN OBJETOS CARTOON
+            String deadline = tiempos[2].split("\n")[0];
            
-
+            ProjectManager manager = new ProjectManager(driveDisney, duracion);
+            Director director = new Director( Integer.parseInt(deadline), driveDisney,250,600, duracion, manager);
+            Estudio disney1 = new Estudio(driveDisney, director, manager, guionistas, disenadores, animadores,actores, plotTwist, ensambladores, duracion, Integer.parseInt(deadline),250, 600);
+            
+            // CREACIÓN OBJETOS CARTOON
+            Semaphore MainmutexC = new Semaphore(1);
+            Drive driveCartoon = new Drive("Cartoon", cartoon[0], cartoon[1], cartoon[2], cartoon[3], cartoon[4], 2);
+            Developer animadoresC = new Developer(0, duracion, driveCartoon, MainmutexC, "Disney", Integer.parseInt(guionistas1));
+            Developer disenadoresC = new Developer(1, duracion, driveCartoon, MainmutexC, "Disney", Integer.parseInt(guionistas2));
+            Developer guionistasC = new Developer(2, duracion, driveCartoon, MainmutexC, "Disney", Integer.parseInt(guionistas3));
+            Developer actoresC = new Developer(3, duracion, driveCartoon, MainmutexC, "Disney", Integer.parseInt(guionistas4));
+            Developer plotTwistC = new Developer(4, duracion, driveCartoon, MainmutexC, "Disney", Integer.parseInt(guionistas5));
+            Developer ensambladoresC = new Developer(5, duracion, driveCartoon, MainmutexC, "Disney", Integer.parseInt(guionistas6));
+            ProjectManager managerC = new ProjectManager(driveCartoon, duracion);
+            Director directorC = new Director( Integer.parseInt(deadline), driveDisney,300,650, duracion, manager);
+            Estudio cartoon1 = new Estudio(driveCartoon, directorC, managerC, guionistasC, disenadoresC, animadoresC,actoresC, plotTwistC, ensambladoresC, duracion, Integer.parseInt(deadline),300, 650);
+            
+            Estudio[] estudios = {disney1, cartoon1};
+            
+                     
+            return estudios;
             
         } catch (Exception e) {
             System.out.println("No se pudo leer el txt");
         }
+        
+        return null;
 
     }
 
@@ -84,7 +114,8 @@ public class FunctionTXT {
         guardar += Integer.toString(estudio.getActores().getTrabajadores()) + "\nPlotTwist,";
         guardar += Integer.toString(estudio.getPlotTwist().getTrabajadores()) + "\nEnsambladores,";
         guardar += Integer.toString(estudio.getEnsambladores().getTrabajadores());
-
+        
+        System.out.println(guardar);
         try {
             PrintWriter pw = new PrintWriter("test\\Information.txt");
             pw.print(guardar);

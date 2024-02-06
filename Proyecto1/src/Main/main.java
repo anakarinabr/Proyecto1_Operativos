@@ -4,8 +4,10 @@
  */
 package Main;
 
+import Clases.Estudio;
 import java.util.concurrent.Semaphore;
 import Clases.FunctionTXT;
+import Interfaces.Global;
 import Interfaces.Interfaz_principal;
 
 /**
@@ -20,7 +22,16 @@ public class main {
     public static void main(String[] args) {
 
         FunctionTXT s = new FunctionTXT();
-        s.leer_txt();
+        try {
+            Estudio[] estudios = s.leer_txt();
+            Global global = new Global(estudios[0], estudios[1], s);
+            Interfaz_principal principal = new Interfaz_principal(global);
+            
+            principal.setVisible(true);
+        } catch (Exception e) {
+            System.out.println("Algo fallo en la lectura de el archivo!!");
+        }
+
 //        int dayDuration = 3000;
 //        Semaphore mainMutex = new Semaphore(1);
 //        Drive drive = new Drive(2,1,1,4,3,2);
@@ -33,7 +44,5 @@ public class main {
 //        hilo1.start();
 //        hilo2.start();
 //        hilo3.start();
-        Interfaz_principal principal = new Interfaz_principal();
-        principal.setVisible(true);
     }
 }
