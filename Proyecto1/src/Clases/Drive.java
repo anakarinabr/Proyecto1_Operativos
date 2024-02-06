@@ -51,14 +51,14 @@ public class Drive {
                 if (this.name.equalsIgnoreCase("Disney")) {
                     if (this.animaciones <= 55 && (this.animaciones + 2 * cantidad) <= 55) {
                         this.animaciones += 2 * cantidad;
-                        System.out.println("animaciones disponibles:" + this.animaciones);
+//                        System.out.println("animaciones disponibles:" + this.animaciones);
                     } else {
                         this.animaciones = 55;
                     }
                 } else {
                     if (this.animaciones <= 55 && (this.animaciones + cantidad) <= 55) {
                         this.animaciones += cantidad;
-                        System.out.println("animaciones disponibles:" + this.animaciones);
+//                        System.out.println("animaciones disponibles:" + this.animaciones);
                     } else {
                         this.animaciones = 55;
                     }
@@ -67,7 +67,7 @@ public class Drive {
             case 1 -> {
                 if (this.escenarios <= 20 && (this.escenarios + cantidad) <= 20) {
                     this.escenarios += cantidad;
-                    System.out.println("escenarios disponibles:" + this.escenarios);
+//                    System.out.println("escenarios disponibles:" + this.escenarios);
                 } else {
                     this.escenarios = 20;
                 }
@@ -75,7 +75,7 @@ public class Drive {
             case 2 -> {
                 if (this.guiones <= 25 && (this.guiones + cantidad) <= 25) {
                     this.guiones += cantidad;
-                    System.out.println("guiones disponibles:" + this.guiones);
+//                    System.out.println("guiones disponibles:" + this.guiones);
                 } else {
                     this.guiones = 25;
                 }
@@ -84,14 +84,14 @@ public class Drive {
                 if (this.name.equalsIgnoreCase("Disney")) {
                     if (this.doblajes <= 35 && (this.doblajes + 3 * cantidad) <= 35) {
                         this.doblajes += 3 * cantidad;
-                        System.out.println("doblajes disponibles:" + this.doblajes);
+//                        System.out.println("doblajes disponibles:" + this.doblajes);
                     } else {
                         this.doblajes = 35;
                     }
                 }else{
                     if (this.doblajes <= 35 && (this.doblajes + 5 * cantidad) <= 35) {
                         this.doblajes += 5 * cantidad;
-                        System.out.println("doblajes disponibles:" + this.doblajes);
+//                        System.out.println("doblajes disponibles:" + this.doblajes);
                     } else {
                         this.doblajes = 35;
                     }
@@ -100,7 +100,7 @@ public class Drive {
             default -> {
                 if (this.PlotTwist <= 10 && (this.PlotTwist + cantidad) <= 10) {
                     this.PlotTwist += cantidad;
-                    System.out.println("PlotTwist disponibles:" + this.PlotTwist);
+//                    System.out.println("PlotTwist disponibles:" + this.PlotTwist);
                 } else {
                     this.PlotTwist = 10;
                 }

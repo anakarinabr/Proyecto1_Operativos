@@ -90,14 +90,15 @@ public class Developer extends Thread {
     public void run() {
         int variable = 0;
         while (true) {
-            variable++;
+//            variable++;
+//            System.out.println("Día: " + variable);
             try {
                 work();
-                sleep(this.dayDuration);
+                sleep(this.dayDuration*1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Developer.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println("Día: " + variable);
+            
         }
     }
 
@@ -119,7 +120,7 @@ public class Developer extends Thread {
                 Logger.getLogger(Developer.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-        } else {
+        } else if(type ==5) {
            try {
                 this.mutex.acquire();//wait
                 this.drive.assembler();//critica

@@ -10,7 +10,7 @@ import Clases.FunctionTXT;
 
 /**
  *
- * @author georg
+ * @author Ana Blancos
  */
 public class Interfaz_principal extends javax.swing.JFrame {
 
@@ -37,6 +37,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
         jSpinnerGuionistasCartoon.setValue(global.getDisney().getGuionistas().getTrabajadores());
         jSpinnerPlotTwistDisney.setValue(global.getDisney().getPlotTwist().getTrabajadores());
         jSpinnerPlotTwistCartoon.setValue(global.getDisney().getPlotTwist().getTrabajadores());
+        jSpinnerDuracion.setValue(global.getDisney().getDuracion());
+        jSpinnerDeadline.setValue(global.getDisney().getDeadline());
       }
 
     /**
@@ -67,7 +69,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
         jSpinnerActoresCartoon = new javax.swing.JSpinner();
         jSpinnerPlotTwistCartoon = new javax.swing.JSpinner();
         jSpinnerEnsambladoresCartoon = new javax.swing.JSpinner();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         DisneyChanel = new javax.swing.JPanel();
         CartoonNetwork = new javax.swing.JPanel();
         jSpinner1 = new javax.swing.JSpinner();
@@ -138,8 +140,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
         jSpinnerEnsambladoresCartoon.setModel(new javax.swing.SpinnerNumberModel(1, 1, 18, 1));
         Dashboard.add(jSpinnerEnsambladoresCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1(!).png"))); // NOI18N
-        Dashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.png"))); // NOI18N
+        Dashboard.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Inicio.addTab("Inicio", Dashboard);
 
@@ -151,7 +153,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
         );
         DisneyChanelLayout.setVerticalGroup(
             DisneyChanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGap(0, 410, Short.MAX_VALUE)
         );
 
         Inicio.addTab("Disney Chanel", DisneyChanel);
@@ -203,21 +205,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
         
         Estudio disney = this.global.getDisney();
         Estudio cartoon = this.global.getCartoon();
-        
-        disney.getAnimadores().setTrabajadores((int)jSpinnerAnimadoresDisney.getValue());
-        cartoon.getAnimadores().setTrabajadores((int)jSpinnerAnimadoresCartoon.getValue());
-        disney.getDiseñadores().setTrabajadores((int)jSpinnerDisenadoresDisney.getValue());
-        cartoon.getDiseñadores().setTrabajadores((int)jSpinnerDisenadoresCartoon.getValue());
-        disney.getActores().setTrabajadores((int)jSpinnerActoresDisney.getValue());
-        cartoon.getActores().setTrabajadores((int)jSpinnerActoresCartoon.getValue());
-        disney.getEnsambladores().setTrabajadores((int)jSpinnerEnsambladoresDisney.getValue());
-        cartoon.getEnsambladores().setTrabajadores((int)jSpinnerEnsambladoresCartoon.getValue());
-        disney.getGuionistas().setTrabajadores((int)jSpinnerGuionistaDisney.getValue());
-        cartoon.getGuionistas().setTrabajadores((int)jSpinnerGuionistasCartoon.getValue());
-        disney.getPlotTwist().setTrabajadores((int)jSpinnerPlotTwistDisney.getValue());
-        cartoon.getPlotTwist().setTrabajadores((int)jSpinnerPlotTwistCartoon.getValue());
-        
-        
+        this.global.getS().leer_spinners(disney, cartoon, jSpinnerDuracion, jSpinnerDeadline, jSpinnerAnimadoresDisney,jSpinnerAnimadoresCartoon, jSpinnerDisenadoresDisney, jSpinnerDisenadoresCartoon, jSpinnerActoresDisney, jSpinnerActoresCartoon, jSpinnerEnsambladoresDisney, jSpinnerEnsambladoresCartoon, jSpinnerGuionistaDisney, jSpinnerGuionistasCartoon, jSpinnerPlotTwistDisney,jSpinnerPlotTwistCartoon);       
         this.global.getS().escribir_txt((Estudio)this.global.getDisney());
        
     }//GEN-LAST:event_ActualizarActionPerformed
@@ -266,8 +254,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane Inicio;
     private javax.swing.JTextField WorkStatus;
     private javax.swing.JTextField faltas;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;

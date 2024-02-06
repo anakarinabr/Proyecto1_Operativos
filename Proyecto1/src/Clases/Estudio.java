@@ -24,6 +24,7 @@ public class Estudio {
     private int gananciaStandar;
     private int gananciaPlotTwist;
     private int gananciaTotal;
+    private int totaltrabajadores;
     
 
     public Estudio(Drive drive, Director director, ProjectManager manager, Developer guionistas, Developer diseñadores, Developer animadores, Developer actores, Developer plotTwist, Developer ensambladores, int duracion, int deadline,  int ganaciaStandar, int gananciaPlotTwist) {
@@ -41,11 +42,14 @@ public class Estudio {
         this.gananciaPlotTwist = gananciaPlotTwist;
         this.gananciaStandar = gananciaStandar;
         this.gananciaTotal = 0;
+        this.totaltrabajadores = guionistas.getTrabajadores()+diseñadores.getTrabajadores()+animadores.getTrabajadores()+actores.getTrabajadores()+plotTwist.getTrabajadores();
     }
     
-    public void generarGanancia(){
-    
+    public void ContarTrabajadores(){
+        
     }
+    
+    
     
     // Getters and Setters
 

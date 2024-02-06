@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.concurrent.Semaphore;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 
 /**
  *
@@ -37,8 +38,7 @@ public class FunctionTXT {
             fr.close();
             br.close();
             txt = txt.trim();
-            System.out.println("--------------------------");
-            System.out.println(txt);
+            
             Semaphore Mainmutex = new Semaphore(1);
             String[] info1 = txt.split("Trabajadores");
 
@@ -90,7 +90,28 @@ public class FunctionTXT {
             
             Estudio[] estudios = {disney1, cartoon1};
             
-                     
+            
+//            // Inicialización de los hilos
+////          Disney
+//            animadores.start();
+//            disenadores.start();
+//            guionistas.start();
+//            actores.start();
+//            plotTwist.start();
+//            ensambladores.start();
+//            manager.start();
+//            director.start();
+//            
+////          Cartoon
+//            animadoresC.start();
+//            disenadoresC.start();
+//            guionistasC.start();
+//            actoresC.start();
+//            plotTwistC.start();
+//            ensambladoresC.start();
+//            managerC.start();
+//            directorC.start();
+//            
             return estudios;
             
         } catch (Exception e) {
@@ -115,7 +136,7 @@ public class FunctionTXT {
         guardar += Integer.toString(estudio.getPlotTwist().getTrabajadores()) + "\nEnsambladores,";
         guardar += Integer.toString(estudio.getEnsambladores().getTrabajadores());
         
-        System.out.println(guardar);
+        
         try {
             PrintWriter pw = new PrintWriter("test\\Information.txt");
             pw.print(guardar);
@@ -127,4 +148,25 @@ public class FunctionTXT {
         }
     }
 
+    public void leer_spinners(Estudio disney, Estudio cartoon, JSpinner jSpinnerDuracion, JSpinner jSpinnerDeadline, JSpinner jSpinnerAnimadoresDisney, JSpinner jSpinnerAnimadoresCartoon,JSpinner jSpinnerDisenadoresDisney, JSpinner jSpinnerDisenadoresCartoon, JSpinner jSpinnerActoresDisney, JSpinner jSpinnerActoresCartoon, JSpinner jSpinnerEnsambladoresDisney, JSpinner jSpinnerEnsambladoresCartoon, JSpinner jSpinnerGuionistaDisney, JSpinner jSpinnerGuionistasCartoon, JSpinner jSpinnerPlotTwistDisney, JSpinner jSpinnerPlotTwistCartoon){
+        
+        disney.setDuracion((int)jSpinnerDuracion.getValue());
+        cartoon.setDuracion((int)jSpinnerDuracion.getValue());
+        disney.setDeadline((int)jSpinnerDeadline.getValue());
+        cartoon.setDeadline((int)jSpinnerDeadline.getValue());
+        disney.getAnimadores().setTrabajadores((int)jSpinnerAnimadoresDisney.getValue());
+        cartoon.getAnimadores().setTrabajadores((int)jSpinnerAnimadoresCartoon.getValue());
+        disney.getDiseñadores().setTrabajadores((int)jSpinnerDisenadoresDisney.getValue());
+        cartoon.getDiseñadores().setTrabajadores((int)jSpinnerDisenadoresCartoon.getValue());
+        disney.getActores().setTrabajadores((int)jSpinnerActoresDisney.getValue());
+        cartoon.getActores().setTrabajadores((int)jSpinnerActoresCartoon.getValue());
+        disney.getEnsambladores().setTrabajadores((int)jSpinnerEnsambladoresDisney.getValue());
+        cartoon.getEnsambladores().setTrabajadores((int)jSpinnerEnsambladoresCartoon.getValue());
+        disney.getGuionistas().setTrabajadores((int)jSpinnerGuionistaDisney.getValue());
+        cartoon.getGuionistas().setTrabajadores((int)jSpinnerGuionistasCartoon.getValue());
+        disney.getPlotTwist().setTrabajadores((int)jSpinnerPlotTwistDisney.getValue());
+        cartoon.getPlotTwist().setTrabajadores((int)jSpinnerPlotTwistCartoon.getValue());
+       
+        
+    }
 }
