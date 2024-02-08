@@ -4,137 +4,174 @@
  */
 package Clases;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.Semaphore;
+import javax.swing.JLabel;
 
 /**
  *
  * @author Ana Blanco
  */
 public class Director extends Thread {
-    
+
     private int salary;
     private int deadline;
-    private boolean revisarManager; 
+    private boolean revisarManager;
     private boolean continuarTrabajando;
     private ProjectManager manager;
-    private int ganancia; //ganancia por ser director
-    private int gananciaAccCapitulos;
+    private int ganancia; //ganancia por ser directo
     private Drive drive;
-    private int faltasCounter;
     private int gananciaCapitulos;
     private int gananciaCapituloPlotTwist;
-    private int dayDuration;
+    private int gananciaAccEstudio;
+    private long dayDuration;
     private String WorkStatus;
+    private int diasrestantes;
+    private long onehour;
+    private Semaphore mutex;
+    private JLabel status;
+    private JLabel descontadoManager;
+    private JLabel faltalabel;
+    private JLabel corte;
 
-    public Director( int deadline, Drive drive, int gananciaCapitulosStandar, int gananciaCapitulosPlotTwist, int dayDuration, ProjectManager manager) {
+    public Director(int deadline, Drive drive, int gananciaCapitulosStandar, int gananciaCapitulosPlotTwist, long dayDuration, ProjectManager manager, Semaphore mutex) {
         this.salary = 0;
         this.deadline = deadline;
         this.revisarManager = false;
-        this.continuarTrabajando = true;
         this.ganancia = 60;
-        this.gananciaAccCapitulos = 0;
         this.drive = drive;
-        this.faltasCounter = 0;
         this.gananciaCapitulos = gananciaCapitulos;
+        this.gananciaCapituloPlotTwist = gananciaCapitulosPlotTwist;
+        this.gananciaAccEstudio = 0;
         this.dayDuration = dayDuration;
+        System.out.println("DAYDURATION "+ this.dayDuration);
         this.manager = manager;
-        this.WorkStatus= "Trabajando";
+        this.WorkStatus = "Trabajando";
+        this.diasrestantes = deadline;
+        this.onehour = 0;
+        this.mutex = mutex;
+        this.status = null;
+        this.descontadoManager = null;
+        this.faltalabel = null;
+        this.corte = null;
     }
 
-
-    
     @Override
     public void run() {
         long randomHour;
-        long MinutosVigilandoPM = this.getMinutosVigilandoInMs();
-        while(this.continuarTrabajando){
+        while (true) {
             try {
-                if (this.deadline == 0){
-                    enviarCapitulos(); //faltacrearla
-                }else{
-                    randomHour = this.getRandomHourInMs();
-                    sleep(randomHour);
-                    this.setRevisarManager(true);
-                    verificarPM();
-//                    WorkStatus.setText("trabajando");
-                    long Dayrest = (long) (this.getDayInMs() - (randomHour + MinutosVigilandoPM));
-                    this.getSalary();
-                    sleep(Dayrest);
                 
+                if (this.diasrestantes == 0) {
+                    this.WorkStatus = "Enviando capitulos";
+
+                    if (this.status != null) {
+                        actualizarlabel(this.status, this.descontadoManager, this.faltalabel, this.corte);
+                    }
+                    enviarCapitulos();
+                    this.diasrestantes = this.deadline;
+                    sleep(this.dayDuration * 1000);
+                } else {
+                    valores();
+                    randomHour = this.getRandomHour();
+                    for (int i = 0; i < 24; i++) {
+                        System.out.println("Random-------"+ randomHour);
+                        System.out.println("i--------- "+ i);
+                        if (randomHour == i) {
+                            System.out.println("VIGILA");
+                            this.setWorkStatus("Revisando Manager");
+                            verificarPM();
+                            if (this.status != null) {
+                                System.out.println("ACTUALIZA");
+                                actualizarlabel(this.status, this.descontadoManager, this.faltalabel, this.corte);
+                            }
+                            long revisar = (long) (this.onehour * 0.6);
+                            sleep(revisar * 1000);
+                            this.WorkStatus = "Trabajando";
+                            long rest = (long) (this.onehour * 0.4);
+                            sleep(rest * 1000);
+                            if (this.status != null) {
+                                actualizarlabel(this.status, this.descontadoManager, this.faltalabel, this.corte);
+                            }
+                            
+                        } else {
+                            this.WorkStatus = "Trabajando";
+                            
+                            if (this.corte != null) {
+                                actualizarlabel(this.status, this.descontadoManager, this.faltalabel, this.corte);
+                            }
+                           sleep(this.onehour*1000);
+                                                       
+                        }
+
+                    }
+                   
+                    this.diasrestantes--;
                 }
                 
-                
-            }catch(InterruptedException ex){
-                
+            } catch (InterruptedException ex) {
+                System.out.println("FALLO ALGO");
             }
         }
     }
-    
-    public void enviarCapitulos(){
-//        try {
-//            this.drive.setCapituloStandar(0);
-//            
-//        } catch (InterruptedException ex){
-//            
-//        }
+
+    public void actualizarlabel(JLabel statusDirector, JLabel descontado, JLabel faltas, JLabel corte) {
+        corte.setText(Integer.toString(this.diasrestantes));
+        statusDirector.setText(this.WorkStatus);
+        System.out.println(statusDirector.getText());
+        descontado.setText(Integer.toString(this.manager.getSalarioDescontado()));
+        faltas.setText(Integer.toString(this.manager.getFaltas()));
+    }
+
+    public void llamar(JLabel statusDirector, JLabel descontado, JLabel faltas, JLabel Corte) {
+        this.setStatus(statusDirector);
+        this.setDescontadoManager(descontado);
+        this.setFaltalabel(faltas);
+        this.setCorte(Corte);
+    }
+
+    public void valores() {
+        this.onehour = (this.dayDuration) / 24;
+    }
+
+    public void enviarCapitulos() {
+        try {
+            this.mutex.acquire();
+            this.gananciaAccEstudio += this.drive.getCapituloStandar() * this.gananciaCapitulos + this.drive.getCapituloPlotTwist() * this.gananciaCapituloPlotTwist;
+            this.drive.setCapituloStandar(0);
+            this.drive.setCapituloPlotTwist(0);
+            this.mutex.release();
+        } catch (Exception e) {
+            System.out.println("Algo falló en enviar capitulos");
+        }
+
+    }
+
+    public void verificarPM() {
         
-    }
-    
-    
-    
-    public void verificarPM(){
-        long MinutosVigilandoPM = getMinutosVigilandoInMs();
-        if (isRevisarManager()){
-//            WorkStatus.setText("Vigilando");
-            if(!this.manager.getWorking()){
-                try{
-                    this.setRevisarManager(false);
-                    this.manager.setSalaryAcc(this.manager.getSalaryAcc()-100);
-                    this.manager.setSalarioDescontado(this.manager.getSalarioDescontado() + 100);
-                    this.setFaltasCounter(this.getFaltasCounter() +1);
-                    sleep(MinutosVigilandoPM);
-                }catch (InterruptedException ex) {
-                    //terminar catch
-                }
-            }else {
-                try {
-                    sleep(MinutosVigilandoPM);
-                    this.setRevisarManager(false);
-                } catch (InterruptedException ex){
-                    //terminar catch
-                }
-            }
-//            WorkStatus.setText("Trabajando");
+        if (!this.manager.getWorking()) {
+            System.out.println("Está viendo anime el manager");
+            this.manager.setFaltas(this.manager.getFaltas() + 1);
+            this.manager.setSalarioDescontado(this.manager.getFaltas() * 100);
+        }else{
+            System.out.println("Está trabajando");
         }
     }
-    
-    public long getRandomHourInMs(){
-        long hourInMs = (long) (this.getDayInMs()/24);
+
+    public long getRandomHour() {
         Random random = new Random();
-        long randomHour = random.nextInt(24);
-        return randomHour * hourInMs;
+        int randomHour = random.nextInt(25);
+        return randomHour;
     }
-    
-    public int getDayInMs() {
-        int dayDurationInMs = this.dayDuration * 1000;
-        return dayDurationInMs;
-    }
-    
-    public long getMinutosVigilandoInMs(){
-        int dayInMinutes =1440;
-        long MinutosVigilandoPM = (long) ((35 * this.dayDuration)/dayInMinutes); //14440000 es un dia en ms
-        return MinutosVigilandoPM;         
-    }
-    
-    
-    
+
 //  GETTERS AND SETTERS
-    
-    public int getDayDuration() {
+    public long getDayDuration() {
         return dayDuration;
     }
 
-    public void setDayDuration(int dayDuration) {
+    public void setDayDuration(long dayDuration) {
         this.dayDuration = dayDuration;
     }
 
@@ -146,47 +183,12 @@ public class Director extends Thread {
         this.salary = salary;
     }
 
-  
-
-
-//    public int getGanancia() {
-//        return ganancia;
-//    }
-//
-//    public void setGanancia(int ganancia) {
-//        this.ganancia = ganancia;
-//    }
-//
-//    public int getGananciaAccCapitulos() {
-//        return gananciaAccCapitulos;
-//    }
-//
-//    public void setGananciaAccCapitulos(int gananciaAccCapitulos) {
-//        this.gananciaAccCapitulos = gananciaAccCapitulos;
-//    }
-//
-//    public int getChaptersCreated() {
-//        return chaptersCreated;
-//    }
-//
-//    public void setChaptersCreated(int chaptersCreated) {
-//        this.chaptersCreated = chaptersCreated;
-//    }
-
     public Drive getDrive() {
         return drive;
     }
 
     public void setDrive(Drive drive) {
         this.drive = drive;
-    }
-
-    public int getFaltasCounter() {
-        return faltasCounter;
-    }
-
-    public void setFaltasCounter(int faltasCounter) {
-        this.faltasCounter = faltasCounter;
     }
 
     public boolean isRevisarManager() {
@@ -205,7 +207,33 @@ public class Director extends Thread {
         this.continuarTrabajando = continuarTrabajando;
     }
 
+    public int getDeadline() {
+        return deadline;
+    }
 
+    public void setDeadline(int deadline) {
+        this.deadline = deadline;
+    }
+
+    public void setStatus(JLabel status) {
+        this.status = status;
+    }
+
+    public void setDescontadoManager(JLabel descontadoManager) {
+        this.descontadoManager = descontadoManager;
+    }
+
+    public void setFaltalabel(JLabel faltalabel) {
+        this.faltalabel = faltalabel;
+    }
+
+    public void setCorte(JLabel corte) {
+        this.corte = corte;
+    }
+
+    public void setWorkStatus(String WorkStatus) {
+        this.WorkStatus = WorkStatus;
+    }
     
     
 }

@@ -71,7 +71,7 @@ public class FunctionTXT {
             String deadline = tiempos[2].split("\n")[0];
 
             ProjectManager manager = new ProjectManager(driveDisney, duracion);
-            Director director = new Director(Integer.parseInt(deadline), driveDisney, 250, 600, duracion, manager);
+            Director director = new Director(Integer.parseInt(deadline), driveDisney, 250, 600, duracion, manager, Mainmutex);
             Estudio disney1 = new Estudio(15, driveDisney, director, manager, guionistas, disenadores, animadores, actores, plotTwist, ensambladores, duracion, Integer.parseInt(deadline), 250, 600);
 
             // CREACIÓN OBJETOS CARTOON
@@ -84,7 +84,7 @@ public class FunctionTXT {
             Developer plotTwistC = new Developer(4, duracion, driveCartoon, MainmutexC, "Disney", Integer.parseInt(guionistas5));
             Developer ensambladoresC = new Developer(5, duracion, driveCartoon, MainmutexC, "Disney", Integer.parseInt(guionistas6));
             ProjectManager managerC = new ProjectManager(driveCartoon, duracion);
-            Director directorC = new Director(Integer.parseInt(deadline), driveDisney, 300, 650, duracion, manager);
+            Director directorC = new Director(Integer.parseInt(deadline), driveDisney, 300, 650, duracion, manager,MainmutexC);
             Estudio cartoon1 = new Estudio(18, driveCartoon, directorC, managerC, guionistasC, disenadoresC, animadoresC, actoresC, plotTwistC, ensambladoresC, duracion, Integer.parseInt(deadline), 300, 650);
 
             Estudio[] estudios = {disney1, cartoon1};
@@ -98,7 +98,7 @@ public class FunctionTXT {
             plotTwist.start();
             ensambladores.start();
             manager.start();
-//            director.start();
+            director.start();
             disney1.start();
             
 //          Cartoon
@@ -109,7 +109,7 @@ public class FunctionTXT {
             plotTwistC.start();
             ensambladoresC.start();
             managerC.start();
-//            directorC.start();
+            directorC.start();
             cartoon1.start();
 //            
             return estudios;
