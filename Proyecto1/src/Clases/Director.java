@@ -21,7 +21,7 @@ public class Director extends Thread {
     private boolean revisarManager;
     private boolean continuarTrabajando;
     private ProjectManager manager;
-    private int ganancia; //ganancia por ser directo
+    private int salaryAcc; // total del director
     private Drive drive;
     private int gananciaCapitulos;
     private int gananciaCapituloPlotTwist;
@@ -39,10 +39,10 @@ public class Director extends Thread {
     private JLabel plot;
 
     public Director(int deadline, Drive drive, int gananciaCapitulosStandar, int gananciaCapitulosPlotTwist, long dayDuration, ProjectManager manager, Semaphore mutex) {
-        this.salary = 0;
+        this.salaryAcc = 0;
         this.deadline = deadline;
         this.revisarManager = false;
-        this.ganancia = 60;
+        this.salary = 60;
         this.drive = drive;
         this.gananciaCapitulos = gananciaCapitulos;
         this.gananciaCapituloPlotTwist = gananciaCapitulosPlotTwist;
@@ -68,6 +68,7 @@ public class Director extends Thread {
         while (true) {
 
             try {
+                obtainSalary();
                 if (this.diasrestantes == 0) {
                     this.WorkStatus = "Enviando capitulos";
 
@@ -127,6 +128,10 @@ public class Director extends Thread {
             }
         }
     }
+    
+    public void obtainSalary() {
+        this.salaryAcc += this.salary * 24 ;
+    }
 
     public void actualizarlabel(JLabel plot,JLabel standar,JLabel statusDirector, JLabel descontado, JLabel faltas, JLabel corte) {
         corte.setText(Integer.toString(this.diasrestantes));
@@ -179,6 +184,8 @@ public class Director extends Thread {
         int randomHour = random.nextInt(25);
         return randomHour;
     }
+    
+    
 
 //  GETTERS AND SETTERS
     public long getDayDuration() {
@@ -255,6 +262,14 @@ public class Director extends Thread {
 
     public void setPlot(JLabel plot) {
         this.plot = plot;
+    }
+
+    public int getSalaryAcc() {
+        return salaryAcc;
+    }
+
+    public int getGananciaAccEstudio() {
+        return gananciaAccEstudio;
     }
     
     

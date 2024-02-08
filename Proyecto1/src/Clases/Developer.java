@@ -17,7 +17,7 @@ public class Developer extends Thread {
 
     private String empresa;
     private int type;
-    private float salaryAcc;
+    private int salaryAcc;
     private int dayDuration;
     private int salary;
     private Drive drive;
@@ -88,12 +88,10 @@ public class Developer extends Thread {
 
     @Override
     public void run() {
-        int variable = 0;
         while (true) {
-//            variable++;
-//            System.out.println("Día: " + variable);
             try {
                 work();
+                obtainSalary();
                 sleep(this.dayDuration*1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Developer.class.getName()).log(Level.SEVERE, null, ex);
@@ -152,11 +150,11 @@ public class Developer extends Thread {
         this.type = type;
     }
 
-    public float getSalaryAcc() {
+    public int getSalaryAcc() {
         return salaryAcc;
     }
 
-    public void setSalaryAcc(float salaryAcc) {
+    public void setSalaryAcc(int salaryAcc) {
         this.salaryAcc = salaryAcc;
     }
 

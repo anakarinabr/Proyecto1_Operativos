@@ -25,9 +25,8 @@ public class Estudio extends Thread {
     private Developer ensambladores;
     private int duracion;
     private int deadline;
-    private int gananciaStandar;
-    private int gananciaPlotTwist;
-    private int gananciaTotal;
+    private int gananciaTotal;   //Ganancia de los capitulos sin gastos
+    private int costos;
     private int totaltrabajadores;
     private int maxtrabajadores;
 //    De aqui para abajo, se utilizan para modificar los labels
@@ -39,7 +38,9 @@ public class Estudio extends Thread {
     private JLabel plotTwists;
     private JLabel Standar;
     private JLabel CapPlotTwist;
-    
+    private JLabel costoslabel;
+    private JLabel gananciasLabel;
+    private JLabel utilidadLabel;
 
     public Estudio(int max, Drive drive, Director director, ProjectManager manager, Developer guionistas, Developer diseñadores, Developer animadores, Developer actores, Developer plotTwist, Developer ensambladores, int duracion, int deadline, int ganaciaStandar, int gananciaPlotTwist) {
         this.drive = drive;
@@ -53,38 +54,65 @@ public class Estudio extends Thread {
         this.ensambladores = ensambladores;
         this.deadline = deadline; //dias en el txt
         this.duracion = duracion;
-        this.gananciaPlotTwist = gananciaPlotTwist;
-        this.gananciaStandar = gananciaStandar;
+        this.costos = 0;
         this.gananciaTotal = 0;
         this.totaltrabajadores = guionistas.getTrabajadores() + diseñadores.getTrabajadores() + animadores.getTrabajadores() + actores.getTrabajadores() + plotTwist.getTrabajadores();
         this.maxtrabajadores = max;
         this.inicio = false;
         this.guiones = null;
         this.doblajes = null;
-        this.animaciones= null;
-        this.escenarios= null;
-        this.plotTwists= null;
+        this.animaciones = null;
+        this.escenarios = null;
+        this.plotTwists = null;
         this.Standar = null;
         this.CapPlotTwist = null;
-       
+        this.costoslabel = null;
+        this.utilidadLabel = null;
+        this.gananciasLabel = null;
     }
 
     @Override
     public void run() {
         while (true) {
-            
+            calcularCostos();
+            calcularGanancia();
+            if (this.costoslabel != null) {
+                actualizarEstadisticas(this.costoslabel, this.utilidadLabel, this.gananciasLabel);
+
+            }
             if (inicio) {
-                actualizar(this.Standar, this.CapPlotTwist,this.guiones, this.doblajes, this.animaciones, this.escenarios, this.plotTwists);
+                actualizar(this.Standar, this.CapPlotTwist, this.guiones, this.doblajes, this.animaciones, this.escenarios, this.plotTwists);
             }
             try {
-                sleep(this.duracion*1000);
+                sleep(this.duracion * 1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Estudio.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
 
-    public void actualizar(JLabel Standar,JLabel CapPlotTwist, JLabel guiones, JLabel doblajes, JLabel animaciones, JLabel escenarios, JLabel plotTwist1) {
+    public void calcularCostos() {
+        this.costos = this.actores.getSalaryAcc() + this.animadores.getSalaryAcc() + this.diseñadores.getSalaryAcc() + this.guionistas.getSalaryAcc() + this.plotTwist.getSalaryAcc() + this.ensambladores.getSalaryAcc() + this.actores.getSalaryAcc() + this.director.getSalaryAcc() + this.manager.getSalaryAcc();
+    }
+
+    public void calcularGanancia() {
+        this.gananciaTotal = this.director.getGananciaAccEstudio();
+
+    }
+
+    public void actualizarEstadisticas(JLabel costos, JLabel utilidad, JLabel ganancias) {
+        costos.setText(Integer.toString(this.costos));
+        ganancias.setText(Integer.toString(this.gananciaTotal));
+        utilidad.setText(Integer.toString(this.gananciaTotal - this.costos));
+    }
+
+    public void llamarEstadisticas(JLabel costos, JLabel utilidad, JLabel ganancias) {
+        this.costoslabel = costos;
+        this.utilidadLabel = utilidad;
+        this.gananciasLabel = ganancias;
+    }
+
+    public void actualizar(JLabel Standar, JLabel CapPlotTwist, JLabel guiones, JLabel doblajes, JLabel animaciones, JLabel escenarios, JLabel plotTwist1) {
         guiones.setText(Integer.toString(this.drive.getGuiones()));
         doblajes.setText(Integer.toString(this.drive.getDoblajes()));
         animaciones.setText(Integer.toString(this.drive.getAnimaciones()));
@@ -92,19 +120,19 @@ public class Estudio extends Thread {
         plotTwist1.setText(Integer.toString(this.drive.getPlotTwist()));
         Standar.setText(Integer.toString(this.drive.getCapituloStandar()));
         CapPlotTwist.setText(Integer.toString(this.drive.getCapituloPlotTwist()));
-       
+
     }
-    
-    public void llamar( JLabel Standar, JLabel plot, JLabel guiones, JLabel doblajes, JLabel animaciones, JLabel escenarios, JLabel plotTwists){
+
+    public void llamar(JLabel Standar, JLabel plot, JLabel guiones, JLabel doblajes, JLabel animaciones, JLabel escenarios, JLabel plotTwists) {
         inicio = true;
         this.guiones = guiones;
         this.doblajes = doblajes;
-        this.animaciones= animaciones;
-        this.escenarios= escenarios;
-        this.plotTwists= plotTwists;
+        this.animaciones = animaciones;
+        this.escenarios = escenarios;
+        this.plotTwists = plotTwists;
         this.Standar = Standar;
         this.CapPlotTwist = plot;
-        
+
     }
 
     // Getters and Setters

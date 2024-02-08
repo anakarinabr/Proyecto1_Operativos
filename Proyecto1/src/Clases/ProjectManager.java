@@ -48,7 +48,7 @@ public class ProjectManager extends Thread {
     public void run() {
         while (true) {
             try {
-                
+                obtainSalary();
                 for (int i = 0; i <= 48; i++) {
                     valores();
                     this.horas++;

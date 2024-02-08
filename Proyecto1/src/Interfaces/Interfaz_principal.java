@@ -66,7 +66,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
         global.getDisney().llamar(Standar, CapP, GuionesD, DoblajesD, AnimacionesD, EscenariosD, PlotTwistD);
         global.getCartoon().getProducer().llamar(PMC);
         global.getCartoon().llamar(StandarC, CapPC, GuionesC, DoblajesC, AnimacionesC, EscenariosC, PlotTwistC);
-      
+        global.getDisney().llamarEstadisticas(CostosD, UtilidadD, GananciaD);
+        global.getCartoon().llamarEstadisticas(CostosC, UtilidadC, GananciaC);
     }
 
     /**
@@ -127,16 +128,16 @@ public class Interfaz_principal extends javax.swing.JFrame {
         StatusDirectorD = new javax.swing.JLabel();
         PM = new javax.swing.JLabel();
         FaltasD = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        GananciaD = new javax.swing.JLabel();
         CapP = new javax.swing.JLabel();
         DoblajesD = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        UtilidadD = new javax.swing.JLabel();
         PlotTwistD = new javax.swing.JLabel();
         EscenariosD = new javax.swing.JLabel();
         Standar = new javax.swing.JLabel();
         AnimacionesD = new javax.swing.JLabel();
         GuionesD = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        CostosD = new javax.swing.JLabel();
         CorteD = new javax.swing.JLabel();
         DescontadoD = new javax.swing.JLabel();
         GuionistasDisney2 = new javax.swing.JLabel();
@@ -150,16 +151,16 @@ public class Interfaz_principal extends javax.swing.JFrame {
         StatusDirectorC = new javax.swing.JLabel();
         PMC = new javax.swing.JLabel();
         FaltasC = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
+        GananciaC = new javax.swing.JLabel();
         CapPC = new javax.swing.JLabel();
         DoblajesC = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
+        UtilidadC = new javax.swing.JLabel();
         PlotTwistC = new javax.swing.JLabel();
         EscenariosC = new javax.swing.JLabel();
         StandarC = new javax.swing.JLabel();
         AnimacionesC = new javax.swing.JLabel();
         GuionesC = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
+        CostosC = new javax.swing.JLabel();
         CorteC = new javax.swing.JLabel();
         DescontadoC = new javax.swing.JLabel();
         GuionistaCartoon2 = new javax.swing.JLabel();
@@ -443,8 +444,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
         FaltasD.setText("0");
         DisneyChanel.add(FaltasD, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
-        jLabel7.setText("0");
-        DisneyChanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, -1, -1));
+        GananciaD.setText("0");
+        DisneyChanel.add(GananciaD, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, -1, -1));
 
         CapP.setText("0");
         DisneyChanel.add(CapP, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, -1, -1));
@@ -452,8 +453,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
         DoblajesD.setText("0");
         DisneyChanel.add(DoblajesD, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
 
-        jLabel10.setText("0");
-        DisneyChanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, -1, -1));
+        UtilidadD.setText("0");
+        DisneyChanel.add(UtilidadD, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, -1, -1));
 
         PlotTwistD.setText("0");
         DisneyChanel.add(PlotTwistD, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, -1, -1));
@@ -470,8 +471,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
         GuionesD.setText("0");
         DisneyChanel.add(GuionesD, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
 
-        jLabel16.setText("0");
-        DisneyChanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, -1, -1));
+        CostosD.setText("0");
+        DisneyChanel.add(CostosD, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, -1, -1));
 
         CorteD.setText("0");
         DisneyChanel.add(CorteD, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, 20, -1));
@@ -514,8 +515,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
         FaltasC.setText("0");
         CartoonNetwork.add(FaltasC, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
-        jLabel35.setText("0");
-        CartoonNetwork.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, -1, -1));
+        GananciaC.setText("0");
+        CartoonNetwork.add(GananciaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, -1, -1));
 
         CapPC.setText("0");
         CartoonNetwork.add(CapPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, -1, -1));
@@ -523,8 +524,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
         DoblajesC.setText("0");
         CartoonNetwork.add(DoblajesC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 20, -1));
 
-        jLabel38.setText("0");
-        CartoonNetwork.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, -1, -1));
+        UtilidadC.setText("0");
+        CartoonNetwork.add(UtilidadC, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, -1, -1));
 
         PlotTwistC.setText("0");
         CartoonNetwork.add(PlotTwistC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 20, -1));
@@ -541,8 +542,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
         GuionesC.setText("0");
         CartoonNetwork.add(GuionesC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 20, -1));
 
-        jLabel44.setText("0");
-        CartoonNetwork.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, -1, -1));
+        CostosC.setText("0");
+        CartoonNetwork.add(CostosC, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, -1, -1));
 
         CorteC.setText("0");
         CartoonNetwork.add(CorteC, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 20, -1));
@@ -779,6 +780,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
     private javax.swing.JPanel CartoonNetwork;
     private javax.swing.JLabel CorteC;
     private javax.swing.JLabel CorteD;
+    private javax.swing.JLabel CostosC;
+    private javax.swing.JLabel CostosD;
     private javax.swing.JPanel Dashboard;
     private javax.swing.JLabel DescontadoC;
     private javax.swing.JLabel DescontadoD;
@@ -798,6 +801,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
     private javax.swing.JLabel EscenariosD;
     private javax.swing.JLabel FaltasC;
     private javax.swing.JLabel FaltasD;
+    private javax.swing.JLabel GananciaC;
+    private javax.swing.JLabel GananciaD;
     private javax.swing.JLabel GuionesC;
     private javax.swing.JLabel GuionesD;
     private javax.swing.JLabel GuionistaCartoon2;
@@ -815,6 +820,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
     private javax.swing.JLabel StandarC;
     private javax.swing.JLabel StatusDirectorC;
     private javax.swing.JLabel StatusDirectorD;
+    private javax.swing.JLabel UtilidadC;
+    private javax.swing.JLabel UtilidadD;
     private javax.swing.JLabel guionistaCartoon;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -841,14 +848,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

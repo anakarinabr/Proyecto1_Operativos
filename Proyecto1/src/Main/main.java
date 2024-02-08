@@ -28,7 +28,6 @@ public class main {
             Interfaz_principal principal = new Interfaz_principal(global);
             principal.setVisible(true);
         } catch (Exception e) {
-            System.out.println(e);
             System.out.println("Algo fallo en la lectura de el archivo!!");
         }
     }
