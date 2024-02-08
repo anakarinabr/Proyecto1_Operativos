@@ -1,9 +1,9 @@
-Duración,8
+Duración,7
 Días,6
 Trabajadores
-Guionista,4
+Guionista,3
 Diseñador,1
-Animador,2
-Actores,5
-PlotTwist,1
-Ensambladores,3
+Animador,6
+Actores,1
+PlotTwist,2
+Ensambladores,1

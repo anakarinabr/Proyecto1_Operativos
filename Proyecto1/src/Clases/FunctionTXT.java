@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.concurrent.Semaphore;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 
@@ -38,28 +39,26 @@ public class FunctionTXT {
             fr.close();
             br.close();
             txt = txt.trim();
-            
+
             Semaphore Mainmutex = new Semaphore(1);
             String[] info1 = txt.split("Trabajadores");
 
             String[] tiempos = info1[0].split(",");
             String[] trabajadores = info1[1].split(",");
-            
 
             int[] disney = {2, 1, 1, 4, 3}; // animaciones, escenarios, guiones, doblajes, plotTwist para ensamblaje
             int[] cartoon = {6, 2, 1, 5, 1};
             String[] separacion = tiempos[1].split("\n");
-       
-            int duracion =Integer.parseInt(separacion[0]);
-            
+
+            int duracion = Integer.parseInt(separacion[0]);
+
             String guionistas1 = trabajadores[1].split("\n")[0];
             String guionistas2 = trabajadores[2].split("\n")[0];
             String guionistas3 = trabajadores[3].split("\n")[0];
             String guionistas4 = trabajadores[4].split("\n")[0];
             String guionistas5 = trabajadores[5].split("\n")[0];
             String guionistas6 = trabajadores[6].split("\n")[0];
-           
-            
+
             // CREACIÓN OBJETOS DISNEY
             Drive driveDisney = new Drive("Disney", disney[0], disney[1], disney[2], disney[3], disney[4], 2);
             Developer animadores = new Developer(0, duracion, driveDisney, Mainmutex, "Disney", Integer.parseInt(guionistas3));
@@ -68,13 +67,13 @@ public class FunctionTXT {
             Developer actores = new Developer(3, duracion, driveDisney, Mainmutex, "Disney", Integer.parseInt(guionistas4));
             Developer plotTwist = new Developer(4, duracion, driveDisney, Mainmutex, "Disney", Integer.parseInt(guionistas5));
             Developer ensambladores = new Developer(5, duracion, driveDisney, Mainmutex, "Disney", Integer.parseInt(guionistas6));
-            
+
             String deadline = tiempos[2].split("\n")[0];
-           
+
             ProjectManager manager = new ProjectManager(driveDisney, duracion);
-            Director director = new Director( Integer.parseInt(deadline), driveDisney,250,600, duracion, manager);
-            Estudio disney1 = new Estudio(driveDisney, director, manager, guionistas, disenadores, animadores,actores, plotTwist, ensambladores, duracion, Integer.parseInt(deadline),250, 600);
-            
+            Director director = new Director(Integer.parseInt(deadline), driveDisney, 250, 600, duracion, manager);
+            Estudio disney1 = new Estudio(15, driveDisney, director, manager, guionistas, disenadores, animadores, actores, plotTwist, ensambladores, duracion, Integer.parseInt(deadline), 250, 600);
+
             // CREACIÓN OBJETOS CARTOON
             Semaphore MainmutexC = new Semaphore(1);
             Drive driveCartoon = new Drive("Cartoon", cartoon[0], cartoon[1], cartoon[2], cartoon[3], cartoon[4], 2);
@@ -85,12 +84,11 @@ public class FunctionTXT {
             Developer plotTwistC = new Developer(4, duracion, driveCartoon, MainmutexC, "Disney", Integer.parseInt(guionistas5));
             Developer ensambladoresC = new Developer(5, duracion, driveCartoon, MainmutexC, "Disney", Integer.parseInt(guionistas6));
             ProjectManager managerC = new ProjectManager(driveCartoon, duracion);
-            Director directorC = new Director( Integer.parseInt(deadline), driveDisney,300,650, duracion, manager);
-            Estudio cartoon1 = new Estudio(driveCartoon, directorC, managerC, guionistasC, disenadoresC, animadoresC,actoresC, plotTwistC, ensambladoresC, duracion, Integer.parseInt(deadline),300, 650);
-            
+            Director directorC = new Director(Integer.parseInt(deadline), driveDisney, 300, 650, duracion, manager);
+            Estudio cartoon1 = new Estudio(18, driveCartoon, directorC, managerC, guionistasC, disenadoresC, animadoresC, actoresC, plotTwistC, ensambladoresC, duracion, Integer.parseInt(deadline), 300, 650);
+
             Estudio[] estudios = {disney1, cartoon1};
-            
-            
+
 //            // Inicialización de los hilos
 ////          Disney
 //            animadores.start();
@@ -113,11 +111,11 @@ public class FunctionTXT {
 //            directorC.start();
 //            
             return estudios;
-            
+
         } catch (Exception e) {
             System.out.println("No se pudo leer el txt");
         }
-        
+
         return null;
 
     }
@@ -135,8 +133,7 @@ public class FunctionTXT {
         guardar += Integer.toString(estudio.getActores().getTrabajadores()) + "\nPlotTwist,";
         guardar += Integer.toString(estudio.getPlotTwist().getTrabajadores()) + "\nEnsambladores,";
         guardar += Integer.toString(estudio.getEnsambladores().getTrabajadores());
-        
-        
+
         try {
             PrintWriter pw = new PrintWriter("test\\Information.txt");
             pw.print(guardar);
@@ -148,25 +145,35 @@ public class FunctionTXT {
         }
     }
 
-    public void leer_spinners(Estudio disney, Estudio cartoon, JSpinner jSpinnerDuracion, JSpinner jSpinnerDeadline, JSpinner jSpinnerAnimadoresDisney, JSpinner jSpinnerAnimadoresCartoon,JSpinner jSpinnerDisenadoresDisney, JSpinner jSpinnerDisenadoresCartoon, JSpinner jSpinnerActoresDisney, JSpinner jSpinnerActoresCartoon, JSpinner jSpinnerEnsambladoresDisney, JSpinner jSpinnerEnsambladoresCartoon, JSpinner jSpinnerGuionistaDisney, JSpinner jSpinnerGuionistasCartoon, JSpinner jSpinnerPlotTwistDisney, JSpinner jSpinnerPlotTwistCartoon){
-        
-        disney.setDuracion((int)jSpinnerDuracion.getValue());
-        cartoon.setDuracion((int)jSpinnerDuracion.getValue());
-        disney.setDeadline((int)jSpinnerDeadline.getValue());
-        cartoon.setDeadline((int)jSpinnerDeadline.getValue());
-        disney.getAnimadores().setTrabajadores((int)jSpinnerAnimadoresDisney.getValue());
-        cartoon.getAnimadores().setTrabajadores((int)jSpinnerAnimadoresCartoon.getValue());
-        disney.getDiseñadores().setTrabajadores((int)jSpinnerDisenadoresDisney.getValue());
-        cartoon.getDiseñadores().setTrabajadores((int)jSpinnerDisenadoresCartoon.getValue());
-        disney.getActores().setTrabajadores((int)jSpinnerActoresDisney.getValue());
-        cartoon.getActores().setTrabajadores((int)jSpinnerActoresCartoon.getValue());
-        disney.getEnsambladores().setTrabajadores((int)jSpinnerEnsambladoresDisney.getValue());
-        cartoon.getEnsambladores().setTrabajadores((int)jSpinnerEnsambladoresCartoon.getValue());
-        disney.getGuionistas().setTrabajadores((int)jSpinnerGuionistaDisney.getValue());
-        cartoon.getGuionistas().setTrabajadores((int)jSpinnerGuionistasCartoon.getValue());
-        disney.getPlotTwist().setTrabajadores((int)jSpinnerPlotTwistDisney.getValue());
-        cartoon.getPlotTwist().setTrabajadores((int)jSpinnerPlotTwistCartoon.getValue());
-       
-        
+    public void sumar_trabajador(Developer trabajador, Estudio disney, JLabel AnimadoresDisney, JLabel DisenadoresDisney,  JLabel ActoresDisney, JLabel EnsambladoresDisney, JLabel GuionistaDisney,  JLabel PlotTwistDisney) {
+
+        int total = Integer.parseInt(AnimadoresDisney.getText()) + Integer.parseInt(DisenadoresDisney.getText()) +Integer.parseInt(ActoresDisney.getText()) + Integer.parseInt(EnsambladoresDisney.getText()) + Integer.parseInt(GuionistaDisney.getText()) + Integer.parseInt(PlotTwistDisney.getText());
+               
+      
+        if (total >= disney.getMaxtrabajadores()) {
+            JOptionPane.showMessageDialog(null, "Disney tiene un límite de 15 trabajadores en total.\n"
+                    + "Cartoon tiene un límite de 18 trabajadores en total.\n"
+                    + "Verifica que no estés sobrepasando el límite de cada estudio.\n");
+        } else {
+            
+           int variable = Integer.parseInt( AnimadoresDisney.getText()) + 1;
+           trabajador.setTrabajadores(variable);
+           AnimadoresDisney.setText(Integer.toString(variable));
+
+        }
+    }
+    
+    public void restar_trabajadores(Developer trabajador, Estudio disney, JLabel AnimadoresDisney){
+    
+              
+        if ( Integer.parseInt(AnimadoresDisney.getText()) <= 1) {
+            JOptionPane.showMessageDialog(null, "Debes tener como mínimo un trabajor!!");
+        } else {
+            
+           int variable = Integer.parseInt( AnimadoresDisney.getText()) - 1;
+           trabajador.setTrabajadores(variable);
+           AnimadoresDisney.setText(Integer.toString(variable));
+
+        }
     }
 }

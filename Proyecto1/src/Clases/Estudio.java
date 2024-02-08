@@ -25,9 +25,10 @@ public class Estudio {
     private int gananciaPlotTwist;
     private int gananciaTotal;
     private int totaltrabajadores;
+    private int maxtrabajadores;
     
 
-    public Estudio(Drive drive, Director director, ProjectManager manager, Developer guionistas, Developer diseñadores, Developer animadores, Developer actores, Developer plotTwist, Developer ensambladores, int duracion, int deadline,  int ganaciaStandar, int gananciaPlotTwist) {
+    public Estudio(int max, Drive drive, Director director, ProjectManager manager, Developer guionistas, Developer diseñadores, Developer animadores, Developer actores, Developer plotTwist, Developer ensambladores, int duracion, int deadline,  int ganaciaStandar, int gananciaPlotTwist) {
         this.drive = drive;
         this.director = director;
         this.manager = manager;
@@ -43,13 +44,8 @@ public class Estudio {
         this.gananciaStandar = gananciaStandar;
         this.gananciaTotal = 0;
         this.totaltrabajadores = guionistas.getTrabajadores()+diseñadores.getTrabajadores()+animadores.getTrabajadores()+actores.getTrabajadores()+plotTwist.getTrabajadores();
+        this.maxtrabajadores = max;
     }
-    
-    public void ContarTrabajadores(){
-        
-    }
-    
-    
     
     // Getters and Setters
 
@@ -140,6 +136,20 @@ public class Estudio {
     public void setDeadline(int deadline) {
         this.deadline = deadline;
     }
-    
-    
+
+    public int getTotaltrabajadores() {
+        return totaltrabajadores;
+    }
+
+    public void setTotaltrabajadores(int totaltrabajadores) {
+        this.totaltrabajadores = totaltrabajadores;
+    }
+
+    public int getMaxtrabajadores() {
+        return maxtrabajadores;
+    }
+
+    public void setMaxtrabajadores(int maxtrabajadores) {
+        this.maxtrabajadores = maxtrabajadores;
+    }
 }
