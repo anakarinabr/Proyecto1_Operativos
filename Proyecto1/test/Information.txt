@@ -1,5 +1,5 @@
-Duración,75
-Días,3
+Duración,7
+Días,6
 Trabajadores
 Guionista,1
 Diseñador,1

@@ -35,6 +35,8 @@ public class Director extends Thread {
     private JLabel descontadoManager;
     private JLabel faltalabel;
     private JLabel corte;
+    private JLabel standar;
+    private JLabel plot;
 
     public Director(int deadline, Drive drive, int gananciaCapitulosStandar, int gananciaCapitulosPlotTwist, long dayDuration, ProjectManager manager, Semaphore mutex) {
         this.salary = 0;
@@ -46,7 +48,6 @@ public class Director extends Thread {
         this.gananciaCapituloPlotTwist = gananciaCapitulosPlotTwist;
         this.gananciaAccEstudio = 0;
         this.dayDuration = dayDuration;
-        System.out.println("DAYDURATION "+ this.dayDuration);
         this.manager = manager;
         this.WorkStatus = "Trabajando";
         this.diasrestantes = deadline;
@@ -56,80 +57,93 @@ public class Director extends Thread {
         this.descontadoManager = null;
         this.faltalabel = null;
         this.corte = null;
+        this.standar = null;
+        this.plot = null;
+
     }
 
     @Override
     public void run() {
         long randomHour;
         while (true) {
+
             try {
-                
                 if (this.diasrestantes == 0) {
                     this.WorkStatus = "Enviando capitulos";
 
                     if (this.status != null) {
-                        actualizarlabel(this.status, this.descontadoManager, this.faltalabel, this.corte);
+                        actualizarlabel(this.plot,this.standar,this.status, this.descontadoManager, this.faltalabel, this.corte);
                     }
                     enviarCapitulos();
+                    if (this.status != null) {
+                        actualizarlabel(this.plot,this.standar,this.status, this.descontadoManager, this.faltalabel, this.corte);
+                    }
+
                     this.diasrestantes = this.deadline;
                     sleep(this.dayDuration * 1000);
                 } else {
                     valores();
                     randomHour = this.getRandomHour();
                     for (int i = 0; i < 24; i++) {
-                        System.out.println("Random-------"+ randomHour);
-                        System.out.println("i--------- "+ i);
                         if (randomHour == i) {
-                            System.out.println("VIGILA");
+
                             this.setWorkStatus("Revisando Manager");
                             verificarPM();
                             if (this.status != null) {
-                                System.out.println("ACTUALIZA");
-                                actualizarlabel(this.status, this.descontadoManager, this.faltalabel, this.corte);
+                                actualizarlabel(this.plot,this.standar,this.status, this.descontadoManager, this.faltalabel, this.corte);
                             }
                             long revisar = (long) (this.onehour * 0.6);
-                            sleep(revisar * 1000);
+
+                            long tiempoEspera = Math.max(revisar, 1);
+                            sleep(tiempoEspera * 1000);
+
                             this.WorkStatus = "Trabajando";
                             long rest = (long) (this.onehour * 0.4);
-                            sleep(rest * 1000);
+
                             if (this.status != null) {
-                                actualizarlabel(this.status, this.descontadoManager, this.faltalabel, this.corte);
+                                actualizarlabel(this.plot,this.standar,this.status, this.descontadoManager, this.faltalabel, this.corte);
                             }
-                            
+
+                            long tiempoEspera1 = Math.max(revisar, this.dayDuration - 1);
+                            sleep(tiempoEspera1 * 1000);
+
                         } else {
                             this.WorkStatus = "Trabajando";
-                            
+
                             if (this.corte != null) {
-                                actualizarlabel(this.status, this.descontadoManager, this.faltalabel, this.corte);
+                                actualizarlabel(this.plot,this.standar,this.status, this.descontadoManager, this.faltalabel, this.corte);
                             }
-                           sleep(this.onehour*1000);
-                                                       
+                            sleep(this.onehour * 1000);
+
                         }
 
                     }
-                   
+
                     this.diasrestantes--;
                 }
-                
+
             } catch (InterruptedException ex) {
                 System.out.println("FALLO ALGO");
             }
         }
     }
 
-    public void actualizarlabel(JLabel statusDirector, JLabel descontado, JLabel faltas, JLabel corte) {
+    public void actualizarlabel(JLabel plot,JLabel standar,JLabel statusDirector, JLabel descontado, JLabel faltas, JLabel corte) {
         corte.setText(Integer.toString(this.diasrestantes));
         statusDirector.setText(this.WorkStatus);
-        System.out.println(statusDirector.getText());
         descontado.setText(Integer.toString(this.manager.getSalarioDescontado()));
         faltas.setText(Integer.toString(this.manager.getFaltas()));
+        standar.setText(Integer.toString(this.drive.getCapituloStandar()));
+        plot.setText(Integer.toString(this.drive.getCapituloPlotTwist()));
     }
 
-    public void llamar(JLabel statusDirector, JLabel descontado, JLabel faltas, JLabel Corte) {
+    public void llamar(JLabel plot1, JLabel statusDirector, JLabel descontado, JLabel faltas, JLabel Corte, JLabel standar) {
         this.setStatus(statusDirector);
         this.setDescontadoManager(descontado);
         this.setFaltalabel(faltas);
         this.setCorte(Corte);
+        this.setStandar(standar);
+        this.setPlot(plot1);
     }
 
     public void valores() {
@@ -150,13 +164,13 @@ public class Director extends Thread {
     }
 
     public void verificarPM() {
-        
+
         if (!this.manager.getWorking()) {
-            System.out.println("Está viendo anime el manager");
+
             this.manager.setFaltas(this.manager.getFaltas() + 1);
             this.manager.setSalarioDescontado(this.manager.getFaltas() * 100);
-        }else{
-            System.out.println("Está trabajando");
+        } else {
+
         }
     }
 
@@ -233,6 +247,14 @@ public class Director extends Thread {
 
     public void setWorkStatus(String WorkStatus) {
         this.WorkStatus = WorkStatus;
+    }
+
+    public void setStandar(JLabel standar) {
+        this.standar = standar;
+    }
+
+    public void setPlot(JLabel plot) {
+        this.plot = plot;
     }
     
     

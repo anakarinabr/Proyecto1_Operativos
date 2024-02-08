@@ -28,8 +28,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.global =global;
-        global.getCartoon().getDirector().llamar(StatusDirectorC, DescontadoC, FaltasC, CorteC);
-        global.getDisney().getDirector().llamar(StatusDirectorD, DescontadoD, FaltasD, CorteD);
+        global.getCartoon().getDirector().llamar(CapPC,StatusDirectorC, DescontadoC, FaltasC, CorteC, StandarC);
+        global.getDisney().getDirector().llamar(CapP, StatusDirectorD, DescontadoD, FaltasD, CorteD, Standar);
         CorteD.setText(Integer.toString(global.getDisney().getDirector().getDeadline()));
         CorteC.setText(Integer.toString(global.getCartoon().getDirector().getDeadline()));
         jSpinnerDuracion.setValue(global.getDisney().getDuracion());
@@ -121,6 +121,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
         EnsambladoresCartoon = new javax.swing.JLabel();
         jButton23 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         DisneyChanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         StatusDirectorD = new javax.swing.JLabel();
@@ -144,6 +145,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
         ActoresDisney2 = new javax.swing.JLabel();
         PlotTwistDisney2 = new javax.swing.JLabel();
         EnsambladoresDisney2 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         CartoonNetwork = new javax.swing.JPanel();
         StatusDirectorC = new javax.swing.JLabel();
         PMC = new javax.swing.JLabel();
@@ -166,6 +168,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
         ActoresCartoon2 = new javax.swing.JLabel();
         PlotTwistCartoon2 = new javax.swing.JLabel();
         EnsambladoresCartoon2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -420,6 +423,10 @@ public class Interfaz_principal extends javax.swing.JFrame {
         });
         Dashboard.add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, -1, -1));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        Dashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         Inicio.addTab("Inicio", Dashboard);
 
         DisneyChanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -490,6 +497,10 @@ public class Interfaz_principal extends javax.swing.JFrame {
         EnsambladoresDisney2.setText("1");
         DisneyChanel.add(EnsambladoresDisney2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 20, 20));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/3.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        DisneyChanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         Inicio.addTab("Disney Chanel", DisneyChanel);
 
         CartoonNetwork.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -556,6 +567,10 @@ public class Interfaz_principal extends javax.swing.JFrame {
 
         EnsambladoresCartoon2.setText("1");
         CartoonNetwork.add(EnsambladoresCartoon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 20, 20));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/2.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        CartoonNetwork.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Inicio.addTab("Cartoon Network", CartoonNetwork);
 
@@ -825,8 +840,11 @@ public class Interfaz_principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel44;
