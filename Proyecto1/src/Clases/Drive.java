@@ -110,14 +110,14 @@ public class Drive {
 
     public void assembler() {
 
-        if ((this.animaciones - this.AnimacionesEnsamblaje) >= 0 && (this.guiones - this.GuionesEnsamblaje) >= 0 && (this.escenarios - this.EscenariosEnsamblaje) >= 0 && (this.doblajes - this.DoblajesEnsamblaje) >= 0 && this.contadorcap < 2) {
+        if ((this.animaciones - this.AnimacionesEnsamblaje) >= 0 && (this.guiones - this.GuionesEnsamblaje) >= 0 && (this.escenarios - this.EscenariosEnsamblaje) >= 0 && (this.doblajes - this.DoblajesEnsamblaje) >= 0 && this.contadorcap < this.cantidad) {
             this.animaciones -= this.AnimacionesEnsamblaje;
             this.guiones -= this.GuionesEnsamblaje;
             this.escenarios -= this.EscenariosEnsamblaje;
             this.doblajes -= this.DoblajesEnsamblaje;
             this.CapituloStandar++;
             this.contadorcap++;
-        } else if ((this.PlotTwist - this.PlotTwistEnsamblaje) >= 0 && (this.animaciones - this.AnimacionesEnsamblaje) >= 0 && (this.guiones - this.GuionesEnsamblaje) >= 0 && (this.escenarios - this.EscenariosEnsamblaje) >= 0 && (this.doblajes - this.DoblajesEnsamblaje) >= 0 && this.contadorcap > 2) {
+        } else if ((this.PlotTwist - this.PlotTwistEnsamblaje) >= 0 && (this.animaciones - this.AnimacionesEnsamblaje) >= 0 && (this.guiones - this.GuionesEnsamblaje) >= 0 && (this.escenarios - this.EscenariosEnsamblaje) >= 0 && (this.doblajes - this.DoblajesEnsamblaje) >= 0 && this.contadorcap >= this.cantidad) {
             this.animaciones -= this.AnimacionesEnsamblaje;
             this.guiones -= this.GuionesEnsamblaje;
             this.escenarios -= this.EscenariosEnsamblaje;

@@ -4,12 +4,16 @@
  */
 package Clases;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Ana Blanco
  */
-public class Estudio {
-    
+public class Estudio extends Thread {
+
     private Drive drive;
     private Director director;
     private ProjectManager manager;
@@ -26,9 +30,18 @@ public class Estudio {
     private int gananciaTotal;
     private int totaltrabajadores;
     private int maxtrabajadores;
+//    De aqui para abajo, se utilizan para modificar los labels
+    private boolean inicio;
+    private JLabel guiones;
+    private JLabel doblajes;
+    private JLabel animaciones;
+    private JLabel escenarios;
+    private JLabel plotTwists;
+    private JLabel Standar;
+    private JLabel CapPlotTwist;
     
 
-    public Estudio(int max, Drive drive, Director director, ProjectManager manager, Developer guionistas, Developer diseñadores, Developer animadores, Developer actores, Developer plotTwist, Developer ensambladores, int duracion, int deadline,  int ganaciaStandar, int gananciaPlotTwist) {
+    public Estudio(int max, Drive drive, Director director, ProjectManager manager, Developer guionistas, Developer diseñadores, Developer animadores, Developer actores, Developer plotTwist, Developer ensambladores, int duracion, int deadline, int ganaciaStandar, int gananciaPlotTwist) {
         this.drive = drive;
         this.director = director;
         this.manager = manager;
@@ -39,16 +52,62 @@ public class Estudio {
         this.plotTwist = plotTwist;
         this.ensambladores = ensambladores;
         this.deadline = deadline; //dias en el txt
-        this.duracion = duracion; 
+        this.duracion = duracion;
         this.gananciaPlotTwist = gananciaPlotTwist;
         this.gananciaStandar = gananciaStandar;
         this.gananciaTotal = 0;
-        this.totaltrabajadores = guionistas.getTrabajadores()+diseñadores.getTrabajadores()+animadores.getTrabajadores()+actores.getTrabajadores()+plotTwist.getTrabajadores();
+        this.totaltrabajadores = guionistas.getTrabajadores() + diseñadores.getTrabajadores() + animadores.getTrabajadores() + actores.getTrabajadores() + plotTwist.getTrabajadores();
         this.maxtrabajadores = max;
+        this.inicio = false;
+        this.guiones = null;
+        this.doblajes = null;
+        this.animaciones= null;
+        this.escenarios= null;
+        this.plotTwists= null;
+        this.Standar = null;
+        this.CapPlotTwist = null;
+       
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            
+            if (inicio) {
+                actualizar(this.Standar, this.CapPlotTwist,this.guiones, this.doblajes, this.animaciones, this.escenarios, this.plotTwists);
+            }
+            try {
+                sleep(this.duracion*1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Estudio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public void actualizar(JLabel Standar,JLabel CapPlotTwist, JLabel guiones, JLabel doblajes, JLabel animaciones, JLabel escenarios, JLabel plotTwist1) {
+        guiones.setText(Integer.toString(this.drive.getGuiones()));
+        doblajes.setText(Integer.toString(this.drive.getDoblajes()));
+        animaciones.setText(Integer.toString(this.drive.getAnimaciones()));
+        escenarios.setText(Integer.toString(this.drive.getEscenarios()));
+        plotTwist1.setText(Integer.toString(this.drive.getPlotTwist()));
+        Standar.setText(Integer.toString(this.drive.getCapituloStandar()));
+        CapPlotTwist.setText(Integer.toString(this.drive.getCapituloPlotTwist()));
+       
     }
     
-    // Getters and Setters
+    public void llamar( JLabel Standar, JLabel plot, JLabel guiones, JLabel doblajes, JLabel animaciones, JLabel escenarios, JLabel plotTwists){
+        inicio = true;
+        this.guiones = guiones;
+        this.doblajes = doblajes;
+        this.animaciones= animaciones;
+        this.escenarios= escenarios;
+        this.plotTwists= plotTwists;
+        this.Standar = Standar;
+        this.CapPlotTwist = plot;
+        
+    }
 
+    // Getters and Setters
     public Drive getDrive() {
         return drive;
     }
@@ -119,7 +178,7 @@ public class Estudio {
 
     public void setEnsambladores(Developer ensambladores) {
         this.ensambladores = ensambladores;
-    }   
+    }
 
     public int getDuracion() {
         return duracion;

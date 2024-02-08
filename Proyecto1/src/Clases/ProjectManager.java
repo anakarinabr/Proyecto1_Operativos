@@ -4,6 +4,7 @@
  */
 package Clases;
 
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
@@ -11,6 +12,7 @@ import javax.swing.JTextField;
  * @author Ana Blanco
  */
 public class ProjectManager extends Thread {
+
     private String WorkStatus;
     private int faltas;
     private int CantDescontada;
@@ -22,79 +24,87 @@ public class ProjectManager extends Thread {
     private int dayDuration;
     private int diasSobrantes;
     private int diasPasados;
+    private int horas;
+    private long mediahora;
+    private JLabel label;
 
-    public ProjectManager( Drive drive, int dayDuration) {
+    public ProjectManager(Drive drive, int dayDuration) {
         this.WorkStatus = "Trabajando";
         this.faltas = 0;
         this.CantDescontada = 0;
         this.salary = 40;
         this.salaryAcc = 0;
         this.salarioDescontado = 100;
-        this.working = false;
+        this.working = true;
         this.drive = drive;
         this.dayDuration = dayDuration;
         this.diasPasados = 0;
+        this.horas = 0;
+        this.mediahora = 0;
+        this.label = null;
     }
 
     @Override
-        
+
     public void run() {
-        while(true) {
-                try {      
-//            for (int i = 0; i < 32; i++) {
-//                //es 32 porque en 16 horas cambia su modo de trabajo 32 veces
-//            }
-//            if (working){
-//                setWorking(false);
-//            }else{ 
-//                setWorking(true);
-//            }
-//            this.salarioDescontado = cantDescontada; 
-//            this.salaryAcc =(- salarioDescontado + this.salaryAcc);
-//                if (working) {
-//                    WorkStatus.setText("Trabajando");
-//                }else{
-//                    WorkStatus.setText("Viendo Anime");
-//                }
-//            Faltas.setText(String.valueOf(faltas));
-//            CantDescontada.setText(String.valueOf(discountedSalary));
-//
-//            sleep(getMinutosTrabajandoInMs());
-//            
-//                    setWorking(true);
-//                    this.setDiasSobrantes(this.getDiasSobrantes()-1);
-//                    this.setDiasPasados(this.getDiasPasados()+1);
-//                    this.salary();
-//                    sleep(HorasRestantes());
-                } catch (Exception e) {
-                    System.out.println("Falló");
-            }
+        while (true) {
+            try {
                 
-        }}
-    
-    public int Horasrestantes(){
-        int HorasRestantes = this.getDayDurationInMs() - getMinutosTrabajandoInMs();
-        return HorasRestantes;
-        
+                for (int i = 0; i <= 48; i++) {
+                    valores();
+                    this.horas++;
+                    if (this.horas <= 32 && this.horas % 2 != 0 && working != true) {
+                        
+                        this.working = true;
+                        this.WorkStatus = "Trabajando";
+                        sleep(this.mediahora * 1000);
+                    } else if (this.horas <= 32 && this.horas % 2 == 0 && working != false) {
+                        
+                        this.working = false;
+                        this.WorkStatus = "Viendo anime";
+                        sleep(this.mediahora * 1000);
+                    } else if (this.horas > 32) {
+                        this.working = true;
+                        this.WorkStatus = "Trabajando";
+                        sleep(this.mediahora * 1000);
+                    }
+                    if (this.label != null) {
+                        actualizarlabel(this.label);
+                    }
+                }
+
+                this.horas = 0;
+                obtainSalary();
+
+            } catch (Exception e) {
+                System.out.println("Falló");
+            }
+
+        }
     }
-    
+
+    public void actualizarlabel(JLabel label) {
+        label.setText(this.WorkStatus);
+    }
+
+    public void llamar(JLabel label) {
+        this.label = label;
+    }
+
+    public void valores() {
+        this.mediahora = (30 * this.dayDuration) / 1440;
+    }
+
+    public void obtainSalary() {
+        this.salaryAcc += this.salary * 24;
+    }
+
     public boolean getWorking() {
         return working;
     }
-    
-    public void setWorking (boolean working) {
+
+    public void setWorking(boolean working) {
         this.working = working;
-    }
-      
-    public int getDayDurationInMs() {
-        int dayDurationInMs = this.dayDuration * 1000;
-        return dayDurationInMs;
-    }
-    
-    public int getMinutosTrabajandoInMs() {
-        int dayInHours = 24;
-        int sixteenHours =  (((16 * this.getDayDurationInMs())/dayInHours)/32);
-        return sixteenHours;
     }
 
     public String getWorkStatus() {
@@ -112,7 +122,6 @@ public class ProjectManager extends Thread {
     public void setFaltas(int Faltas) {
         this.faltas = Faltas;
     }
-
 
     public int getSalary() {
         return salary;
@@ -169,8 +178,5 @@ public class ProjectManager extends Thread {
     public void setDiasPasados(int diasPasados) {
         this.diasPasados = diasPasados;
     }
-    
-    
-    
-    
+
 }

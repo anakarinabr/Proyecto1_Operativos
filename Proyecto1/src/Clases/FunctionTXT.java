@@ -76,7 +76,7 @@ public class FunctionTXT {
 
             // CREACIÓN OBJETOS CARTOON
             Semaphore MainmutexC = new Semaphore(1);
-            Drive driveCartoon = new Drive("Cartoon", cartoon[0], cartoon[1], cartoon[2], cartoon[3], cartoon[4], 2);
+            Drive driveCartoon = new Drive("Cartoon", cartoon[0], cartoon[1], cartoon[2], cartoon[3], cartoon[4], 3);
             Developer animadoresC = new Developer(0, duracion, driveCartoon, MainmutexC, "Disney", Integer.parseInt(guionistas1));
             Developer disenadoresC = new Developer(1, duracion, driveCartoon, MainmutexC, "Disney", Integer.parseInt(guionistas2));
             Developer guionistasC = new Developer(2, duracion, driveCartoon, MainmutexC, "Disney", Integer.parseInt(guionistas3));
@@ -89,26 +89,28 @@ public class FunctionTXT {
 
             Estudio[] estudios = {disney1, cartoon1};
 
-//            // Inicialización de los hilos
-////          Disney
-//            animadores.start();
-//            disenadores.start();
-//            guionistas.start();
-//            actores.start();
-//            plotTwist.start();
-//            ensambladores.start();
-//            manager.start();
+            // Inicialización de los hilos
+//          Disney
+            animadores.start();
+            disenadores.start();
+            guionistas.start();
+            actores.start();
+            plotTwist.start();
+            ensambladores.start();
+            manager.start();
 //            director.start();
-//            
-////          Cartoon
-//            animadoresC.start();
-//            disenadoresC.start();
-//            guionistasC.start();
-//            actoresC.start();
-//            plotTwistC.start();
-//            ensambladoresC.start();
-//            managerC.start();
+            disney1.start();
+            
+//          Cartoon
+            animadoresC.start();
+            disenadoresC.start();
+            guionistasC.start();
+            actoresC.start();
+            plotTwistC.start();
+            ensambladoresC.start();
+            managerC.start();
 //            directorC.start();
+            cartoon1.start();
 //            
             return estudios;
 
@@ -145,7 +147,7 @@ public class FunctionTXT {
         }
     }
 
-    public void sumar_trabajador(Developer trabajador, Estudio disney, JLabel AnimadoresDisney, JLabel DisenadoresDisney,  JLabel ActoresDisney, JLabel EnsambladoresDisney, JLabel GuionistaDisney,  JLabel PlotTwistDisney) {
+    public void sumar_trabajador(JLabel adjunto, Developer trabajador, Estudio disney, JLabel AnimadoresDisney, JLabel DisenadoresDisney,  JLabel ActoresDisney, JLabel EnsambladoresDisney, JLabel GuionistaDisney,  JLabel PlotTwistDisney) {
 
         int total = Integer.parseInt(AnimadoresDisney.getText()) + Integer.parseInt(DisenadoresDisney.getText()) +Integer.parseInt(ActoresDisney.getText()) + Integer.parseInt(EnsambladoresDisney.getText()) + Integer.parseInt(GuionistaDisney.getText()) + Integer.parseInt(PlotTwistDisney.getText());
                
@@ -159,11 +161,12 @@ public class FunctionTXT {
            int variable = Integer.parseInt( AnimadoresDisney.getText()) + 1;
            trabajador.setTrabajadores(variable);
            AnimadoresDisney.setText(Integer.toString(variable));
+           adjunto.setText(Integer.toString(variable));
 
         }
     }
     
-    public void restar_trabajadores(Developer trabajador, Estudio disney, JLabel AnimadoresDisney){
+    public void restar_trabajadores(JLabel adjunto,Developer trabajador, Estudio disney, JLabel AnimadoresDisney){
     
               
         if ( Integer.parseInt(AnimadoresDisney.getText()) <= 1) {
@@ -173,6 +176,7 @@ public class FunctionTXT {
            int variable = Integer.parseInt( AnimadoresDisney.getText()) - 1;
            trabajador.setTrabajadores(variable);
            AnimadoresDisney.setText(Integer.toString(variable));
+           adjunto.setText(Integer.toString(variable));
 
         }
     }

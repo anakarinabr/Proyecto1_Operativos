@@ -21,7 +21,6 @@ public class Interfaz_principal extends javax.swing.JFrame {
      */
     
     public static Global global;
-    private int trabajadores;
     
     public Interfaz_principal(Global global) {
         
@@ -36,6 +35,14 @@ public class Interfaz_principal extends javax.swing.JFrame {
         ActoresDisney.setText(Integer.toString(global.getDisney().getActores().getTrabajadores()));
         PlotTwistDisney.setText(Integer.toString(global.getDisney().getPlotTwist().getTrabajadores()));
         EnsambladoresDisney.setText(Integer.toString(global.getDisney().getEnsambladores().getTrabajadores()));
+        GuionistasDisney2.setText(Integer.toString(global.getDisney().getGuionistas().getTrabajadores()));
+        DisenadoresDisney2.setText(Integer.toString(global.getDisney().getDiseñadores().getTrabajadores()));
+        AnimadoresDisney2.setText(Integer.toString(global.getDisney().getAnimadores().getTrabajadores()));
+        ActoresDisney2.setText(Integer.toString(global.getDisney().getActores().getTrabajadores()));
+        PlotTwistDisney2.setText(Integer.toString(global.getDisney().getPlotTwist().getTrabajadores()));
+        EnsambladoresDisney2.setText(Integer.toString(global.getDisney().getEnsambladores().getTrabajadores()));
+        
+        
         
         guionistaCartoon.setText(Integer.toString(global.getCartoon().getGuionistas().getTrabajadores()));
         DisenadoresCartoon.setText(Integer.toString(global.getCartoon().getDiseñadores().getTrabajadores()));
@@ -43,8 +50,20 @@ public class Interfaz_principal extends javax.swing.JFrame {
         ActoresCartoon.setText(Integer.toString(global.getCartoon().getActores().getTrabajadores()));
         PlotTwistCartoon.setText(Integer.toString(global.getCartoon().getPlotTwist().getTrabajadores()));
         EnsambladoresCartoon.setText(Integer.toString(global.getCartoon().getEnsambladores().getTrabajadores()));
+        GuionistaCartoon2.setText(Integer.toString(global.getCartoon().getGuionistas().getTrabajadores()));
+        DisenadoresCartoon2.setText(Integer.toString(global.getCartoon().getDiseñadores().getTrabajadores()));
+        AnimadoresCartoon2.setText(Integer.toString(global.getCartoon().getAnimadores().getTrabajadores()));
+        ActoresCartoon2.setText(Integer.toString(global.getCartoon().getActores().getTrabajadores()));
+        PlotTwistCartoon2.setText(Integer.toString(global.getCartoon().getPlotTwist().getTrabajadores()));
+        EnsambladoresCartoon2.setText(Integer.toString(global.getCartoon().getEnsambladores().getTrabajadores()));
         
-      }
+        global.getDisney().getProducer().llamar(PM);
+        global.getDisney().llamar(Standar, CapP, GuionesD, DoblajesD, AnimacionesD, EscenariosD, PlotTwistD);
+        
+        global.getCartoon().getProducer().llamar(PMC);
+        global.getCartoon().llamar(StandarC, CapPC, GuionesC, DoblajesC, AnimacionesC, EscenariosC, PlotTwistC);
+      
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -98,22 +117,52 @@ public class Interfaz_principal extends javax.swing.JFrame {
         EnsambladoresCartoon = new javax.swing.JLabel();
         jButton23 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         DisneyChanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
-        jSpinner4 = new javax.swing.JSpinner();
-        jSpinner5 = new javax.swing.JSpinner();
-        jSpinner6 = new javax.swing.JSpinner();
-        jSpinner7 = new javax.swing.JSpinner();
+        jLabel1 = new javax.swing.JLabel();
+        PM = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        CapP = new javax.swing.JLabel();
+        DoblajesD = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        PlotTwistD = new javax.swing.JLabel();
+        EscenariosD = new javax.swing.JLabel();
+        Standar = new javax.swing.JLabel();
+        AnimacionesD = new javax.swing.JLabel();
+        GuionesD = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        GuionistasDisney2 = new javax.swing.JLabel();
+        DisenadoresDisney2 = new javax.swing.JLabel();
+        AnimadoresDisney2 = new javax.swing.JLabel();
+        ActoresDisney2 = new javax.swing.JLabel();
+        PlotTwistDisney2 = new javax.swing.JLabel();
+        EnsambladoresDisney2 = new javax.swing.JLabel();
         CartoonNetwork = new javax.swing.JPanel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jLabel2 = new javax.swing.JLabel();
-        WorkStatus = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        faltas = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        PMC = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        CapPC = new javax.swing.JLabel();
+        DoblajesC = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        PlotTwistC = new javax.swing.JLabel();
+        EscenariosC = new javax.swing.JLabel();
+        StandarC = new javax.swing.JLabel();
+        AnimacionesC = new javax.swing.JLabel();
+        GuionesC = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        GuionistaCartoon2 = new javax.swing.JLabel();
+        DisenadoresCartoon2 = new javax.swing.JLabel();
+        AnimadoresCartoon2 = new javax.swing.JLabel();
+        ActoresCartoon2 = new javax.swing.JLabel();
+        PlotTwistCartoon2 = new javax.swing.JLabel();
+        EnsambladoresCartoon2 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -368,79 +417,146 @@ public class Interfaz_principal extends javax.swing.JFrame {
         });
         Dashboard.add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.png"))); // NOI18N
-        Dashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         Inicio.addTab("Inicio", Dashboard);
 
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        DisneyChanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout DisneyChanelLayout = new javax.swing.GroupLayout(DisneyChanel);
-        DisneyChanel.setLayout(DisneyChanelLayout);
-        DisneyChanelLayout.setHorizontalGroup(
-            DisneyChanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DisneyChanelLayout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(DisneyChanelLayout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addGroup(DisneyChanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(416, Short.MAX_VALUE))
-        );
-        DisneyChanelLayout.setVerticalGroup(
-            DisneyChanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DisneyChanelLayout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
-                .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
-        );
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        DisneyChanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel1.setText("Trabajando");
+        DisneyChanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
+
+        PM.setText("Trabajando");
+        DisneyChanel.add(PM, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
+
+        jLabel6.setText("0");
+        DisneyChanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+
+        jLabel7.setText("0");
+        DisneyChanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, -1, -1));
+
+        CapP.setText("0");
+        DisneyChanel.add(CapP, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, -1, -1));
+
+        DoblajesD.setText("0");
+        DisneyChanel.add(DoblajesD, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
+
+        jLabel10.setText("0");
+        DisneyChanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, -1, -1));
+
+        PlotTwistD.setText("0");
+        DisneyChanel.add(PlotTwistD, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, -1, -1));
+
+        EscenariosD.setText("0");
+        DisneyChanel.add(EscenariosD, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
+
+        Standar.setText("0");
+        DisneyChanel.add(Standar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, -1, -1));
+
+        AnimacionesD.setText("0");
+        DisneyChanel.add(AnimacionesD, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
+
+        GuionesD.setText("0");
+        DisneyChanel.add(GuionesD, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
+
+        jLabel16.setText("0");
+        DisneyChanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, -1, -1));
+
+        jLabel17.setText("0");
+        DisneyChanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, -1, -1));
+
+        jLabel18.setText("0");
+        DisneyChanel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
+
+        GuionistasDisney2.setText("1");
+        DisneyChanel.add(GuionistasDisney2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 20, 20));
+
+        DisenadoresDisney2.setText("1");
+        DisneyChanel.add(DisenadoresDisney2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 20, 20));
+
+        AnimadoresDisney2.setText("1");
+        DisneyChanel.add(AnimadoresDisney2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 20, 20));
+
+        ActoresDisney2.setText("1");
+        DisneyChanel.add(ActoresDisney2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 20, 20));
+
+        PlotTwistDisney2.setText("1");
+        DisneyChanel.add(PlotTwistDisney2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 20, 20));
+
+        EnsambladoresDisney2.setText("1");
+        DisneyChanel.add(EnsambladoresDisney2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 20, 20));
 
         Inicio.addTab("Disney Chanel", DisneyChanel);
 
         CartoonNetwork.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        CartoonNetwork.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
 
-        jLabel2.setText("Project Manager");
-        CartoonNetwork.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 109, 140, -1));
+        jLabel4.setText("Trabajando");
+        CartoonNetwork.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
 
-        WorkStatus.setText("jTextField1");
-        WorkStatus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                WorkStatusActionPerformed(evt);
-            }
-        });
-        CartoonNetwork.add(WorkStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, -1));
+        PMC.setText("Trabajando");
+        CartoonNetwork.add(PMC, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
-        jLabel4.setText("WorkStatus");
-        CartoonNetwork.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
+        jLabel20.setText("0");
+        CartoonNetwork.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
-        faltas.setText("jTextField1");
-        faltas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                faltasActionPerformed(evt);
-            }
-        });
-        CartoonNetwork.add(faltas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, -1));
+        jLabel35.setText("0");
+        CartoonNetwork.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, -1, -1));
 
-        jLabel5.setText("Cant de faltas");
-        CartoonNetwork.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
+        CapPC.setText("0");
+        CartoonNetwork.add(CapPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, -1, -1));
+
+        DoblajesC.setText("0");
+        CartoonNetwork.add(DoblajesC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 20, -1));
+
+        jLabel38.setText("0");
+        CartoonNetwork.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, -1, -1));
+
+        PlotTwistC.setText("0");
+        CartoonNetwork.add(PlotTwistC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 20, -1));
+
+        EscenariosC.setText("0");
+        CartoonNetwork.add(EscenariosC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 20, -1));
+
+        StandarC.setText("0");
+        CartoonNetwork.add(StandarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, -1, -1));
+
+        AnimacionesC.setText("0");
+        CartoonNetwork.add(AnimacionesC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 20, -1));
+
+        GuionesC.setText("0");
+        CartoonNetwork.add(GuionesC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 20, -1));
+
+        jLabel44.setText("0");
+        CartoonNetwork.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, -1, -1));
+
+        jLabel45.setText("0");
+        CartoonNetwork.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, -1, -1));
+
+        jLabel46.setText("0");
+        CartoonNetwork.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
+
+        GuionistaCartoon2.setText("1");
+        CartoonNetwork.add(GuionistaCartoon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 20, 20));
+
+        DisenadoresCartoon2.setText("1");
+        CartoonNetwork.add(DisenadoresCartoon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 20, 20));
+
+        AnimadoresCartoon2.setText("1");
+        CartoonNetwork.add(AnimadoresCartoon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 20, 20));
+
+        ActoresCartoon2.setText("1");
+        CartoonNetwork.add(ActoresCartoon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 20, 20));
+
+        PlotTwistCartoon2.setText("1");
+        CartoonNetwork.add(PlotTwistCartoon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 20, 20));
+
+        EnsambladoresCartoon2.setText("1");
+        CartoonNetwork.add(EnsambladoresCartoon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 20, 20));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/2.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        CartoonNetwork.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Inicio.addTab("Cartoon Network", CartoonNetwork);
 
@@ -449,133 +565,148 @@ public class Interfaz_principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void WorkStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WorkStatusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_WorkStatusActionPerformed
-
-    private void faltasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_faltasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_faltasActionPerformed
-
     private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
         
         Estudio disney = this.global.getDisney();
-        disney.setDuracion((int)jSpinnerDuracion.getValue());
-        this.global.getCartoon().setDuracion((int)jSpinnerDuracion.getValue());
+        Estudio cartoon = this.global.getCartoon();
+        int valor = (int)jSpinnerDuracion.getValue();
+        disney.setDuracion(valor);
+        
+        disney.getActores().setDayDuration(valor);
+        disney.getEnsambladores().setDayDuration(valor);
+        disney.getDiseñadores().setDayDuration(valor);
+        disney.getPlotTwist().setDayDuration(valor);
+        disney.getProducer().setDayDuration(valor);
+        disney.getGuionistas().setDayDuration(valor);
+        disney.getAnimadores().setDayDuration(valor);
+        disney.getDirector().setDayDuration(valor);
+        
+        cartoon.getActores().setDayDuration(valor);
+        cartoon.getEnsambladores().setDayDuration(valor);
+        cartoon.getDiseñadores().setDayDuration(valor);
+        cartoon.getPlotTwist().setDayDuration(valor);
+        cartoon.getProducer().setDayDuration(valor);
+        cartoon.getGuionistas().setDayDuration(valor);
+        cartoon.getAnimadores().setDayDuration(valor);
+        cartoon.getDirector().setDayDuration(valor);
+      
         disney.setDeadline((int)jSpinnerDeadline.getValue());
-        this.global.getCartoon().setDeadline((int)jSpinnerDeadline.getValue());
+        cartoon.setDeadline((int)jSpinnerDeadline.getValue());
+               
+        
         this.global.getS().escribir_txt(disney);
+        
     }//GEN-LAST:event_ActualizarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.global.getS().sumar_trabajador(this.global.getDisney().getGuionistas(), this.global.getDisney(), DisneyGuionista, DisenadoresDisney, ActoresDisney, EnsambladoresDisney, AnimadoresDisney, PlotTwistDisney);
+        this.global.getS().sumar_trabajador( GuionistasDisney2,this.global.getDisney().getGuionistas(), this.global.getDisney(), DisneyGuionista, DisenadoresDisney, ActoresDisney, EnsambladoresDisney, AnimadoresDisney, PlotTwistDisney);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.global.getS().restar_trabajadores(this.global.getDisney().getGuionistas(), this.global.getDisney(),  DisneyGuionista);
+        this.global.getS().restar_trabajadores(GuionistasDisney2,this.global.getDisney().getGuionistas(), this.global.getDisney(),  DisneyGuionista);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        this.global.getS().sumar_trabajador(this.global.getDisney().getDiseñadores(), this.global.getDisney(), DisenadoresDisney, DisneyGuionista, ActoresDisney, EnsambladoresDisney, AnimadoresDisney, PlotTwistDisney);
+        this.global.getS().sumar_trabajador(DisenadoresDisney2,this.global.getDisney().getDiseñadores(), this.global.getDisney(), DisenadoresDisney, DisneyGuionista, ActoresDisney, EnsambladoresDisney, AnimadoresDisney, PlotTwistDisney);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-         this.global.getS().restar_trabajadores(this.global.getDisney().getDiseñadores(), this.global.getDisney(),  DisenadoresDisney);
+         this.global.getS().restar_trabajadores(DisenadoresDisney,this.global.getDisney().getDiseñadores(), this.global.getDisney(),  DisenadoresDisney);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.global.getS().sumar_trabajador(this.global.getDisney().getAnimadores(), this.global.getDisney(), AnimadoresDisney, DisneyGuionista, ActoresDisney, EnsambladoresDisney, DisenadoresDisney, PlotTwistDisney);
+        this.global.getS().sumar_trabajador( AnimadoresDisney2,this.global.getDisney().getAnimadores(), this.global.getDisney(), AnimadoresDisney, DisneyGuionista, ActoresDisney, EnsambladoresDisney, DisenadoresDisney, PlotTwistDisney);
                                            
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-         this.global.getS().restar_trabajadores(this.global.getDisney().getAnimadores(), this.global.getDisney(),  AnimadoresDisney);
+         this.global.getS().restar_trabajadores( AnimadoresDisney2,this.global.getDisney().getAnimadores(), this.global.getDisney(),  AnimadoresDisney);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        this.global.getS().restar_trabajadores(this.global.getDisney().getActores(), this.global.getDisney(),  ActoresDisney);
+        this.global.getS().restar_trabajadores(ActoresDisney2,this.global.getDisney().getActores(), this.global.getDisney(),  ActoresDisney);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        this.global.getS().sumar_trabajador(this.global.getDisney().getActores(), this.global.getDisney(), ActoresDisney, DisneyGuionista, DisenadoresDisney, EnsambladoresDisney, AnimadoresDisney, PlotTwistDisney);
+        this.global.getS().sumar_trabajador(ActoresDisney2,this.global.getDisney().getActores(), this.global.getDisney(), ActoresDisney, DisneyGuionista, DisenadoresDisney, EnsambladoresDisney, AnimadoresDisney, PlotTwistDisney);
                                            
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-       this.global.getS().restar_trabajadores(this.global.getDisney().getPlotTwist(), this.global.getDisney(),  PlotTwistDisney);
+       this.global.getS().restar_trabajadores(PlotTwistDisney2,this.global.getDisney().getPlotTwist(), this.global.getDisney(),  PlotTwistDisney);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        this.global.getS().sumar_trabajador(this.global.getDisney().getPlotTwist(), this.global.getDisney(), PlotTwistDisney, DisneyGuionista, ActoresDisney, EnsambladoresDisney, AnimadoresDisney, DisenadoresDisney);
+        this.global.getS().sumar_trabajador(PlotTwistDisney,this.global.getDisney().getPlotTwist(), this.global.getDisney(), PlotTwistDisney, DisneyGuionista, ActoresDisney, EnsambladoresDisney, AnimadoresDisney, DisenadoresDisney);
                                           
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-       this.global.getS().restar_trabajadores(this.global.getDisney().getEnsambladores(), this.global.getDisney(),  EnsambladoresDisney);
+       this.global.getS().restar_trabajadores(EnsambladoresDisney2,this.global.getDisney().getEnsambladores(), this.global.getDisney(),  EnsambladoresDisney);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-       this.global.getS().sumar_trabajador(this.global.getDisney().getEnsambladores(), this.global.getDisney(), EnsambladoresDisney, DisneyGuionista, ActoresDisney, DisenadoresDisney, AnimadoresDisney, PlotTwistDisney);                                     
+       this.global.getS().sumar_trabajador( EnsambladoresDisney2,this.global.getDisney().getEnsambladores(), this.global.getDisney(), EnsambladoresDisney, DisneyGuionista, ActoresDisney, DisenadoresDisney, AnimadoresDisney, PlotTwistDisney);                                     
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        this.global.getS().sumar_trabajador(this.global.getCartoon().getGuionistas(), this.global.getCartoon(), guionistaCartoon, EnsambladoresCartoon, ActoresCartoon, DisenadoresCartoon, AnimadoresCartoon, PlotTwistCartoon);                                     
+        this.global.getS().sumar_trabajador( GuionistaCartoon2,this.global.getCartoon().getGuionistas(), this.global.getCartoon(), guionistaCartoon, EnsambladoresCartoon, ActoresCartoon, DisenadoresCartoon, AnimadoresCartoon, PlotTwistCartoon);                                     
                                             
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        this.global.getS().restar_trabajadores(this.global.getCartoon().getGuionistas(), this.global.getCartoon(),  guionistaCartoon);
+        this.global.getS().restar_trabajadores( GuionistaCartoon2,this.global.getCartoon().getGuionistas(), this.global.getCartoon(),  guionistaCartoon);
     
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-       this.global.getS().sumar_trabajador(this.global.getCartoon().getDiseñadores(), this.global.getCartoon(), DisenadoresCartoon, EnsambladoresCartoon, ActoresCartoon, guionistaCartoon , AnimadoresCartoon, PlotTwistCartoon);                                     
+       this.global.getS().sumar_trabajador(DisenadoresCartoon2,this.global.getCartoon().getDiseñadores(), this.global.getCartoon(), DisenadoresCartoon, EnsambladoresCartoon, ActoresCartoon, guionistaCartoon , AnimadoresCartoon, PlotTwistCartoon);                                     
            
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-         this.global.getS().restar_trabajadores(this.global.getCartoon().getDiseñadores(), this.global.getCartoon(),  DisenadoresCartoon);
+         this.global.getS().restar_trabajadores(DisenadoresCartoon2,this.global.getCartoon().getDiseñadores(), this.global.getCartoon(),  DisenadoresCartoon);
     
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-       this.global.getS().sumar_trabajador(this.global.getCartoon().getAnimadores(), this.global.getCartoon(), AnimadoresCartoon, EnsambladoresCartoon, ActoresCartoon, guionistaCartoon , DisenadoresCartoon, PlotTwistCartoon);                                     
+       this.global.getS().sumar_trabajador( AnimadoresCartoon,this.global.getCartoon().getAnimadores(), this.global.getCartoon(), AnimadoresCartoon, EnsambladoresCartoon, ActoresCartoon, guionistaCartoon , DisenadoresCartoon, PlotTwistCartoon);                                     
          
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        this.global.getS().restar_trabajadores(this.global.getCartoon().getAnimadores(), this.global.getCartoon(),  AnimadoresCartoon);
+        this.global.getS().restar_trabajadores( AnimadoresCartoon2,this.global.getCartoon().getAnimadores(), this.global.getCartoon(),  AnimadoresCartoon);
     
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        this.global.getS().restar_trabajadores(this.global.getCartoon().getActores(), this.global.getCartoon(),  ActoresCartoon);
+        this.global.getS().restar_trabajadores(ActoresCartoon2,this.global.getCartoon().getActores(), this.global.getCartoon(),  ActoresCartoon);
     
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        this.global.getS().sumar_trabajador(this.global.getCartoon().getActores(), this.global.getCartoon(), ActoresCartoon, EnsambladoresCartoon, AnimadoresCartoon, guionistaCartoon , DisenadoresCartoon, PlotTwistCartoon);                                     
+        this.global.getS().sumar_trabajador(ActoresCartoon2,this.global.getCartoon().getActores(), this.global.getCartoon(), ActoresCartoon, EnsambladoresCartoon, AnimadoresCartoon, guionistaCartoon , DisenadoresCartoon, PlotTwistCartoon);                                     
          
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        this.global.getS().restar_trabajadores(this.global.getCartoon().getPlotTwist(), this.global.getCartoon(),  PlotTwistCartoon);
+        this.global.getS().restar_trabajadores(PlotTwistCartoon2,this.global.getCartoon().getPlotTwist(), this.global.getCartoon(),  PlotTwistCartoon);
     
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-       this.global.getS().sumar_trabajador(this.global.getCartoon().getPlotTwist(), this.global.getCartoon(), PlotTwistCartoon, EnsambladoresCartoon, AnimadoresCartoon, guionistaCartoon , DisenadoresCartoon, ActoresCartoon);                                     
+       this.global.getS().sumar_trabajador(PlotTwistCartoon2,this.global.getCartoon().getPlotTwist(), this.global.getCartoon(), PlotTwistCartoon, EnsambladoresCartoon, AnimadoresCartoon, guionistaCartoon , DisenadoresCartoon, ActoresCartoon);                                     
          
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        this.global.getS().restar_trabajadores(this.global.getCartoon().getEnsambladores(), this.global.getCartoon(),  EnsambladoresCartoon);
+        this.global.getS().restar_trabajadores(EnsambladoresCartoon2,this.global.getCartoon().getEnsambladores(), this.global.getCartoon(),  EnsambladoresCartoon);
     
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-         this.global.getS().sumar_trabajador(this.global.getCartoon().getEnsambladores(), this.global.getCartoon(), EnsambladoresCartoon, PlotTwistCartoon, AnimadoresCartoon, guionistaCartoon , DisenadoresCartoon, ActoresCartoon);                                     
+         this.global.getS().sumar_trabajador(EnsambladoresCartoon2,this.global.getCartoon().getEnsambladores(), this.global.getCartoon(), EnsambladoresCartoon, PlotTwistCartoon, AnimadoresCartoon, guionistaCartoon , DisenadoresCartoon, ActoresCartoon);                                     
          
     }//GEN-LAST:event_jButton24ActionPerformed
 
@@ -617,23 +748,49 @@ public class Interfaz_principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ActoresCartoon;
+    private javax.swing.JLabel ActoresCartoon2;
     private javax.swing.JLabel ActoresDisney;
+    private javax.swing.JLabel ActoresDisney2;
     private javax.swing.JButton Actualizar;
+    private javax.swing.JLabel AnimacionesC;
+    private javax.swing.JLabel AnimacionesD;
     private javax.swing.JLabel AnimadoresCartoon;
+    private javax.swing.JLabel AnimadoresCartoon2;
     private javax.swing.JLabel AnimadoresDisney;
+    private javax.swing.JLabel AnimadoresDisney2;
+    private javax.swing.JLabel CapP;
+    private javax.swing.JLabel CapPC;
     private javax.swing.JPanel CartoonNetwork;
     private javax.swing.JPanel Dashboard;
     private javax.swing.JLabel DisenadoresCartoon;
+    private javax.swing.JLabel DisenadoresCartoon2;
     private javax.swing.JLabel DisenadoresDisney;
+    private javax.swing.JLabel DisenadoresDisney2;
     private javax.swing.JPanel DisneyChanel;
     private javax.swing.JLabel DisneyGuionista;
+    private javax.swing.JLabel DoblajesC;
+    private javax.swing.JLabel DoblajesD;
     private javax.swing.JLabel EnsambladoresCartoon;
+    private javax.swing.JLabel EnsambladoresCartoon2;
     private javax.swing.JLabel EnsambladoresDisney;
+    private javax.swing.JLabel EnsambladoresDisney2;
+    private javax.swing.JLabel EscenariosC;
+    private javax.swing.JLabel EscenariosD;
+    private javax.swing.JLabel GuionesC;
+    private javax.swing.JLabel GuionesD;
+    private javax.swing.JLabel GuionistaCartoon2;
+    private javax.swing.JLabel GuionistasDisney2;
     private javax.swing.JTabbedPane Inicio;
+    private javax.swing.JLabel PM;
+    private javax.swing.JLabel PMC;
+    private javax.swing.JLabel PlotTwistC;
     private javax.swing.JLabel PlotTwistCartoon;
+    private javax.swing.JLabel PlotTwistCartoon2;
+    private javax.swing.JLabel PlotTwistD;
     private javax.swing.JLabel PlotTwistDisney;
-    private javax.swing.JTextField WorkStatus;
-    private javax.swing.JTextField faltas;
+    private javax.swing.JLabel PlotTwistDisney2;
+    private javax.swing.JLabel Standar;
+    private javax.swing.JLabel StandarC;
     private javax.swing.JLabel guionistaCartoon;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -660,19 +817,23 @@ public class Interfaz_principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
-    private javax.swing.JSpinner jSpinner5;
-    private javax.swing.JSpinner jSpinner6;
-    private javax.swing.JSpinner jSpinner7;
     private javax.swing.JSpinner jSpinnerDeadline;
     private javax.swing.JSpinner jSpinnerDuracion;
     // End of variables declaration//GEN-END:variables
