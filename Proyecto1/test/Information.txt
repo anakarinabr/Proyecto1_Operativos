@@ -1,9 +1,9 @@
-Duración,11
+Duración,4
 Días,8
 Trabajadores
 Guionista,1
 Diseñador,1
 Animador,1
-Actores,10
+Actores,1
 PlotTwist,1
 Ensambladores,1

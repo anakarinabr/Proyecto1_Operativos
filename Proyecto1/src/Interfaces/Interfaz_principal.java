@@ -28,8 +28,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.global =global;
-        global.getCartoon().getDirector().llamar(CapPC,StatusDirectorC, DescontadoC, FaltasC, CorteC, StandarC);
-        global.getDisney().getDirector().llamar(CapP, StatusDirectorD, DescontadoD, FaltasD, CorteD, Standar);
+        global.getCartoon().getDirector().llamar(GananciaC,CapPC,StatusDirectorC, DescontadoC, FaltasC, CorteC, StandarC);
+        global.getDisney().getDirector().llamar(GananciaD,CapP, StatusDirectorD, DescontadoD, FaltasD, CorteD, Standar);
         CorteD.setText(Integer.toString(global.getDisney().getDirector().getDeadline()));
         CorteC.setText(Integer.toString(global.getCartoon().getDirector().getDeadline()));
         jSpinnerDuracion.setValue(global.getDisney().getDuracion());
@@ -66,8 +66,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
         global.getDisney().llamar(Standar, CapP, GuionesD, DoblajesD, AnimacionesD, EscenariosD, PlotTwistD);
         global.getCartoon().getProducer().llamar(PMC);
         global.getCartoon().llamar(StandarC, CapPC, GuionesC, DoblajesC, AnimacionesC, EscenariosC, PlotTwistC);
-        global.getDisney().llamarEstadisticas(CostosD, UtilidadD, GananciaD);
-        global.getCartoon().llamarEstadisticas(CostosC, UtilidadC, GananciaC);
+        global.getDisney().llamarEstadisticas(CostosD, UtilidadD, GananciaD, DescontadoD);
+        global.getCartoon().llamarEstadisticas(CostosC, UtilidadC, GananciaC, DescontadoC);
     }
 
     /**
@@ -169,7 +169,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
         ActoresCartoon2 = new javax.swing.JLabel();
         PlotTwistCartoon2 = new javax.swing.JLabel();
         EnsambladoresCartoon2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -436,16 +436,16 @@ public class Interfaz_principal extends javax.swing.JFrame {
         DisneyChanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         StatusDirectorD.setText("Trabajando");
-        DisneyChanel.add(StatusDirectorD, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
+        DisneyChanel.add(StatusDirectorD, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 120, -1));
 
         PM.setText("Trabajando");
-        DisneyChanel.add(PM, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
+        DisneyChanel.add(PM, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 160, -1));
 
         FaltasD.setText("0");
         DisneyChanel.add(FaltasD, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         GananciaD.setText("0");
-        DisneyChanel.add(GananciaD, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, -1, -1));
+        DisneyChanel.add(GananciaD, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 90, -1));
 
         CapP.setText("0");
         DisneyChanel.add(CapP, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, -1, -1));
@@ -454,7 +454,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
         DisneyChanel.add(DoblajesD, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
 
         UtilidadD.setText("0");
-        DisneyChanel.add(UtilidadD, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, -1, -1));
+        DisneyChanel.add(UtilidadD, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 90, -1));
 
         PlotTwistD.setText("0");
         DisneyChanel.add(PlotTwistD, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, -1, -1));
@@ -472,7 +472,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
         DisneyChanel.add(GuionesD, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
 
         CostosD.setText("0");
-        DisneyChanel.add(CostosD, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, -1, -1));
+        DisneyChanel.add(CostosD, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, 90, -1));
 
         CorteD.setText("0");
         DisneyChanel.add(CorteD, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, 20, -1));
@@ -507,16 +507,16 @@ public class Interfaz_principal extends javax.swing.JFrame {
         CartoonNetwork.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         StatusDirectorC.setText("Trabajando");
-        CartoonNetwork.add(StatusDirectorC, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
+        CartoonNetwork.add(StatusDirectorC, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 140, -1));
 
         PMC.setText("Trabajando");
-        CartoonNetwork.add(PMC, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
+        CartoonNetwork.add(PMC, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 140, -1));
 
         FaltasC.setText("0");
         CartoonNetwork.add(FaltasC, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         GananciaC.setText("0");
-        CartoonNetwork.add(GananciaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, -1, -1));
+        CartoonNetwork.add(GananciaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 80, -1));
 
         CapPC.setText("0");
         CartoonNetwork.add(CapPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, -1, -1));
@@ -525,7 +525,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
         CartoonNetwork.add(DoblajesC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 20, -1));
 
         UtilidadC.setText("0");
-        CartoonNetwork.add(UtilidadC, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, -1, -1));
+        CartoonNetwork.add(UtilidadC, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 80, -1));
 
         PlotTwistC.setText("0");
         CartoonNetwork.add(PlotTwistC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 20, -1));
@@ -543,7 +543,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
         CartoonNetwork.add(GuionesC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 20, -1));
 
         CostosC.setText("0");
-        CartoonNetwork.add(CostosC, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, -1, -1));
+        CartoonNetwork.add(CostosC, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, 90, -1));
 
         CorteC.setText("0");
         CartoonNetwork.add(CorteC, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 20, -1));
@@ -569,9 +569,9 @@ public class Interfaz_principal extends javax.swing.JFrame {
         EnsambladoresCartoon2.setText("1");
         CartoonNetwork.add(EnsambladoresCartoon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 20, 20));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/2.png"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        CartoonNetwork.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/2.png"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        CartoonNetwork.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Inicio.addTab("Cartoon Network", CartoonNetwork);
 
@@ -849,7 +849,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

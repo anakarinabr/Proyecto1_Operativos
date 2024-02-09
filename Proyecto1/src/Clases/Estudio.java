@@ -4,6 +4,7 @@
  */
 package Clases;
 
+import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
@@ -13,7 +14,8 @@ import javax.swing.JLabel;
  * @author Ana Blanco
  */
 public class Estudio extends Thread {
-
+    
+    
     private Drive drive;
     private Director director;
     private ProjectManager manager;
@@ -41,8 +43,10 @@ public class Estudio extends Thread {
     private JLabel costoslabel;
     private JLabel gananciasLabel;
     private JLabel utilidadLabel;
+    private JLabel descuento;
 
     public Estudio(int max, Drive drive, Director director, ProjectManager manager, Developer guionistas, Developer diseñadores, Developer animadores, Developer actores, Developer plotTwist, Developer ensambladores, int duracion, int deadline, int ganaciaStandar, int gananciaPlotTwist) {
+       
         this.drive = drive;
         this.director = director;
         this.manager = manager;
@@ -69,6 +73,7 @@ public class Estudio extends Thread {
         this.costoslabel = null;
         this.utilidadLabel = null;
         this.gananciasLabel = null;
+        this.descuento =null;
     }
 
     @Override
@@ -77,7 +82,7 @@ public class Estudio extends Thread {
             calcularCostos();
             calcularGanancia();
             if (this.costoslabel != null) {
-                actualizarEstadisticas(this.costoslabel, this.utilidadLabel, this.gananciasLabel);
+                actualizarEstadisticas(this.costoslabel, this.utilidadLabel, this.gananciasLabel, this.descuento);
 
             }
             if (inicio) {
@@ -92,7 +97,7 @@ public class Estudio extends Thread {
     }
 
     public void calcularCostos() {
-        this.costos = this.actores.getSalaryAcc() + this.animadores.getSalaryAcc() + this.diseñadores.getSalaryAcc() + this.guionistas.getSalaryAcc() + this.plotTwist.getSalaryAcc() + this.ensambladores.getSalaryAcc() + this.actores.getSalaryAcc() + this.director.getSalaryAcc() + this.manager.getSalaryAcc();
+        this.costos = this.animadores.getSalaryAcc() + this.diseñadores.getSalaryAcc() + this.guionistas.getSalaryAcc() + this.plotTwist.getSalaryAcc() + this.ensambladores.getSalaryAcc() + this.actores.getSalaryAcc() + this.director.getSalaryAcc() + this.director.getSalaryPMAcc();
     }
 
     public void calcularGanancia() {
@@ -100,16 +105,16 @@ public class Estudio extends Thread {
 
     }
 
-    public void actualizarEstadisticas(JLabel costos, JLabel utilidad, JLabel ganancias) {
+    public void actualizarEstadisticas(JLabel costos, JLabel utilidad, JLabel ganancias, JLabel descuento ) {
         costos.setText(Integer.toString(this.costos));
-        ganancias.setText(Integer.toString(this.gananciaTotal));
-        utilidad.setText(Integer.toString(this.gananciaTotal - this.costos));
+        utilidad.setText(Integer.toString((this.gananciaTotal*1000) - this.costos + Integer.parseInt(descuento.getText())));
     }
 
-    public void llamarEstadisticas(JLabel costos, JLabel utilidad, JLabel ganancias) {
+    public void llamarEstadisticas(JLabel costos, JLabel utilidad, JLabel ganancias, JLabel descuento) {
         this.costoslabel = costos;
         this.utilidadLabel = utilidad;
         this.gananciasLabel = ganancias;
+        this.descuento = descuento;
     }
 
     public void actualizar(JLabel Standar, JLabel CapPlotTwist, JLabel guiones, JLabel doblajes, JLabel animaciones, JLabel escenarios, JLabel plotTwist1) {

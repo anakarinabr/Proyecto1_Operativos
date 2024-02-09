@@ -56,24 +56,25 @@ public class ProjectManager extends Thread {
                         
                         this.working = true;
                         this.WorkStatus = "Trabajando";
-                        sleep(this.mediahora * 1000);
-                    } else if (this.horas <= 32 && this.horas % 2 == 0 && working != false) {
                         
+                    } else if (this.horas <= 32 && this.horas % 2 == 0 && working != false) {                       
                         this.working = false;
                         this.WorkStatus = "Viendo anime";
-                        sleep(this.mediahora * 1000);
+                        
                     } else if (this.horas > 32) {
                         this.working = true;
                         this.WorkStatus = "Trabajando";
-                        sleep(this.mediahora * 1000);
+                        
                     }
                     if (this.label != null) {
                         actualizarlabel(this.label);
                     }
+                    sleep(this.mediahora*100);
+                   
                 }
+                
 
                 this.horas = 0;
-                obtainSalary();
 
             } catch (Exception e) {
                 System.out.println("Falló");
@@ -96,6 +97,7 @@ public class ProjectManager extends Thread {
 
     public void obtainSalary() {
         this.salaryAcc += this.salary * 24;
+        
     }
 
     public boolean getWorking() {

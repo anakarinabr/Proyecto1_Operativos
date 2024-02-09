@@ -60,6 +60,7 @@ public class FunctionTXT {
             String guionistas6 = trabajadores[6].split("\n")[0];
 
             // CREACIÓN OBJETOS DISNEY
+            Semaphore nuevo = new Semaphore(1);
             Drive driveDisney = new Drive("Disney", disney[0], disney[1], disney[2], disney[3], disney[4], 2);
             Developer animadores = new Developer(0, duracion, driveDisney, Mainmutex, "Disney", Integer.parseInt(guionistas3));
             Developer disenadores = new Developer(1, duracion, driveDisney, Mainmutex, "Disney", Integer.parseInt(guionistas2));
@@ -71,10 +72,11 @@ public class FunctionTXT {
             String deadline = tiempos[2].split("\n")[0];
 
             ProjectManager manager = new ProjectManager(driveDisney, duracion);
-            Director director = new Director(Integer.parseInt(deadline), driveDisney, 250, 600, duracion, manager, Mainmutex);
+            Director director = new Director(nuevo,Integer.parseInt(deadline), driveDisney, 250, 600, duracion, manager, Mainmutex);
             Estudio disney1 = new Estudio(15, driveDisney, director, manager, guionistas, disenadores, animadores, actores, plotTwist, ensambladores, duracion, Integer.parseInt(deadline), 250, 600);
 
             // CREACIÓN OBJETOS CARTOON
+            Semaphore nuevo1 = new Semaphore(1);
             Semaphore MainmutexC = new Semaphore(1);
             Drive driveCartoon = new Drive("Cartoon", cartoon[0], cartoon[1], cartoon[2], cartoon[3], cartoon[4], 3);
             Developer animadoresC = new Developer(0, duracion, driveCartoon, MainmutexC, "Disney", Integer.parseInt(guionistas1));
@@ -84,7 +86,7 @@ public class FunctionTXT {
             Developer plotTwistC = new Developer(4, duracion, driveCartoon, MainmutexC, "Disney", Integer.parseInt(guionistas5));
             Developer ensambladoresC = new Developer(5, duracion, driveCartoon, MainmutexC, "Disney", Integer.parseInt(guionistas6));
             ProjectManager managerC = new ProjectManager(driveCartoon, duracion);
-            Director directorC = new Director(Integer.parseInt(deadline), driveDisney, 300, 650, duracion, manager,MainmutexC);
+            Director directorC = new Director(nuevo1,Integer.parseInt(deadline), driveDisney, 300, 650, duracion, manager,MainmutexC);
             Estudio cartoon1 = new Estudio(18, driveCartoon, directorC, managerC, guionistasC, disenadoresC, animadoresC, actoresC, plotTwistC, ensambladoresC, duracion, Integer.parseInt(deadline), 300, 650);
 
             Estudio[] estudios = {disney1, cartoon1};

@@ -92,7 +92,7 @@ public class Developer extends Thread {
             try {
                 work();
                 obtainSalary();
-                sleep(this.dayDuration*1000);
+                sleep((this.dayDuration)*1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Developer.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -102,6 +102,7 @@ public class Developer extends Thread {
 
     public void obtainSalary() {
         this.salaryAcc += this.salary * 24 *this.trabajadores;
+//        System.out.println(this.salaryAcc);
     }
 
     public void work() throws InterruptedException {

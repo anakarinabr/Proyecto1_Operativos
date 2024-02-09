@@ -15,10 +15,13 @@ import javax.swing.JLabel;
  * @author Ana Blanco
  */
 public class Director extends Thread {
-
+    
+    private Semaphore nuevo;
     private int salary;
     private int deadline;
     private boolean revisarManager;
+    private int salaryPM;
+    private int salaryPMAcc;
     private boolean continuarTrabajando;
     private ProjectManager manager;
     private int salaryAcc; // total del director
@@ -27,6 +30,7 @@ public class Director extends Thread {
     private int gananciaCapituloPlotTwist;
     private int gananciaAccEstudio;
     private long dayDuration;
+    private boolean entro;
     private String WorkStatus;
     private int diasrestantes;
     private long onehour;
@@ -37,20 +41,24 @@ public class Director extends Thread {
     private JLabel corte;
     private JLabel standar;
     private JLabel plot;
+    private JLabel ganancias;
 
-    public Director(int deadline, Drive drive, int gananciaCapitulosStandar, int gananciaCapitulosPlotTwist, long dayDuration, ProjectManager manager, Semaphore mutex) {
+    public Director(Semaphore nuevo, int deadline, Drive drive, int gananciaCapitulosStandar, int gananciaCapitulosPlotTwist, long dayDuration, ProjectManager manager, Semaphore mutex) {
+        this.nuevo =  nuevo;
         this.salaryAcc = 0;
         this.deadline = deadline;
         this.revisarManager = false;
         this.salary = 60;
         this.drive = drive;
-        this.gananciaCapitulos = gananciaCapitulos;
+        this.gananciaCapitulos = gananciaCapitulosStandar;
         this.gananciaCapituloPlotTwist = gananciaCapitulosPlotTwist;
         this.gananciaAccEstudio = 0;
         this.dayDuration = dayDuration;
         this.manager = manager;
         this.WorkStatus = "Trabajando";
         this.diasrestantes = deadline;
+        this.salaryPM = 40;
+        this.salaryPMAcc = 0;
         this.onehour = 0;
         this.mutex = mutex;
         this.status = null;
@@ -59,6 +67,7 @@ public class Director extends Thread {
         this.corte = null;
         this.standar = null;
         this.plot = null;
+        this.ganancias = null;
 
     }
 
@@ -69,9 +78,10 @@ public class Director extends Thread {
 
             try {
                 obtainSalary();
-                if (this.diasrestantes == 0) {
+                calcularSalaryManager();
+                if (this.diasrestantes == 0 ) {
                     this.WorkStatus = "Enviando capitulos";
-
+                    entro = true;
                     if (this.status != null) {
                         actualizarlabel(this.plot,this.standar,this.status, this.descontadoManager, this.faltalabel, this.corte);
                     }
@@ -83,6 +93,7 @@ public class Director extends Thread {
                     this.diasrestantes = this.deadline;
                     sleep(this.dayDuration * 1000);
                 } else {
+                    
                     valores();
                     randomHour = this.getRandomHour();
                     for (int i = 0; i < 24; i++) {
@@ -132,6 +143,10 @@ public class Director extends Thread {
     public void obtainSalary() {
         this.salaryAcc += this.salary * 24 ;
     }
+    
+    public void calcularSalaryManager(){
+        this.salaryPMAcc += this.salaryPM *24;
+    }
 
     public void actualizarlabel(JLabel plot,JLabel standar,JLabel statusDirector, JLabel descontado, JLabel faltas, JLabel corte) {
         corte.setText(Integer.toString(this.diasrestantes));
@@ -142,13 +157,14 @@ public class Director extends Thread {
         plot.setText(Integer.toString(this.drive.getCapituloPlotTwist()));
     }
 
-    public void llamar(JLabel plot1, JLabel statusDirector, JLabel descontado, JLabel faltas, JLabel Corte, JLabel standar) {
+    public void llamar(JLabel ganancias, JLabel plot1, JLabel statusDirector, JLabel descontado, JLabel faltas, JLabel Corte, JLabel standar) {
         this.setStatus(statusDirector);
         this.setDescontadoManager(descontado);
         this.setFaltalabel(faltas);
         this.setCorte(Corte);
         this.setStandar(standar);
         this.setPlot(plot1);
+        this.ganancias = ganancias;
     }
 
     public void valores() {
@@ -157,11 +173,12 @@ public class Director extends Thread {
 
     public void enviarCapitulos() {
         try {
-            this.mutex.acquire();
+//            this.mutex.acquire();
             this.gananciaAccEstudio += this.drive.getCapituloStandar() * this.gananciaCapitulos + this.drive.getCapituloPlotTwist() * this.gananciaCapituloPlotTwist;
+            this.ganancias.setText(Integer.toString(this.gananciaAccEstudio*1000));  
             this.drive.setCapituloStandar(0);
             this.drive.setCapituloPlotTwist(0);
-            this.mutex.release();
+//            this.mutex.release();
         } catch (Exception e) {
             System.out.println("Algo falló en enviar capitulos");
         }
@@ -270,6 +287,10 @@ public class Director extends Thread {
 
     public int getGananciaAccEstudio() {
         return gananciaAccEstudio;
+    }
+
+    public int getSalaryPMAcc() {
+        return salaryPMAcc;
     }
     
     
